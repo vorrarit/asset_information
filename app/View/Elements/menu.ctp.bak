@@ -1,0 +1,25 @@
+<div class ="actions">
+<!--    <h3><?php echo __('Actions')?></h3>-->
+    <?php
+    $currentUser = $this->Session->read('Auth.User');
+    if(!empty($currentUser)){
+        ?>
+    <ul>
+        <li><?php echo $this->Html->link(__('Logout'), array('controller' => 'users', 'action' => 'logout')); ?> </li>   
+    </ul>
+    <?php
+    }
+    ?>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
