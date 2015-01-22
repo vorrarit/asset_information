@@ -6,10 +6,13 @@ class FileDocumentsController extends AppController {
 
     public $components = array('Paginator', 'Session');
 
-    public function index() {
+    public function index($assetInformationId = null) {
+        
         $this->layout = "carousel";
+        $this->set('assetID', $assetInformationId);
         $this->FileDocument->recursive = 0;
-        $this->set('fileDocuments', $this->Paginator->paginate());
+        $this->set('fileDocuments',$this->FileDocument->find('all',array('conditions'=>array('FileDocument.asset_information_id'=>$assetInformationId))));
+        //$this->set('fileDocuments', $this->Paginator->paginate());
     }
 
     public function view($id = null) {
@@ -21,8 +24,11 @@ class FileDocumentsController extends AppController {
     }
 
     public function add($assetInformationId = null) {
-
+        
+            $this->set('assetID', $assetInformationId);
+            
         if ($this->request->is('post')) {
+            
             $document = $this->request->data['FileDocument']['document'];
 
             if ($this->isUploadedFile($document)) {
@@ -31,16 +37,17 @@ class FileDocumentsController extends AppController {
                 $document['file_doc_path'] = '/files/filedocument';
                 $document['file_doc_file_type'] = $document['type'];
                 $document['file_doc_name'] = 'filedocumentzzz_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
+                $document['asset_information_id'] = $assetInformationId;
+                
                 $currentUser = $this->Session->read('Auth.User');
                 $document['created_by'] = $currentUser['username'];
                 $this->FileDocument->create();
-                
-                if ($this->FileDocument->save($document)) {           
+
+                if ($this->FileDocument->save($document)) {
                     $document['id'] = $this->FileDocument->id;
                     $document['file_doc_name'] = 'filedocumentzzz_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
                     $this->saveUploadFile($document, 'files/filedocument', $document['file_doc_name']);
                     $this->FileDocument->save($document);
-
 
                     return $this->redirect(array('action' => 'index'));
                 } else {
