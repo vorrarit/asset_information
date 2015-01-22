@@ -8,9 +8,9 @@
 
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#">แก้ไขข้อมูลทรัพย์สิน</a></li>
-        <li role="presentation"><a href="/FileDocuments/add/<?php echo $this->data['AssetInformation']['id']; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
-        <li role="presentation"><a href="/Photos/add/<?php echo $this->data['AssetInformation']['id']; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
-        <li role="presentation"><a href="/FileMaps/add/<?php echo $this->data['AssetInformation']['id']; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
+        <li role="presentation"><a href="/FileDocuments/index/<?php echo $this->data['AssetInformation']['id']; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
+        <li role="presentation"><a href="/Photos/index/<?php echo $this->data['AssetInformation']['id']; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+        <li role="presentation"><a href="/FileMaps/index/<?php echo $this->data['AssetInformation']['id']; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
     </ul>
 </div>
 
@@ -34,7 +34,7 @@
             <?php echo $this->Form->input('asset_info_dealing_file_no',array('label'=>'หน้าสำรวจ','maxlength'=>'6','div'=>array('class'=>'col-lg-6 form-group')));?>
         </div>
         <div class ="row">
-            <?php echo $this->Form->input('asset_info_Boundary',array('label'=>'เขตติดต่อ','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group')));?>
+            <?php echo $this->Form->input('asset_info_boundary',array('label'=>'เขตติดต่อ','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group')));?>
         </div>
         <div class ="row">
             <?php echo $this->Form->input('asset_info_north',array('label'=>'ทิศเหนือ','maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
@@ -114,7 +114,7 @@
         </div>
         
         <div class ="row">
-            <?php echo $this->Form->input('asset_info_gps_coordinate',array('label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'))); ?>
+            <?php echo $this->Form->input('asset_info_gps_coordinate',array('onkeypress'=>'validate(event)','label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'))); ?>
         </div>
         
         <div class ="row">
@@ -139,7 +139,7 @@
         var theEvent = evt || window.event;
         var key = theEvent.keyCode || theEvent.which;
         key = String.fromCharCode( key );
-        var regex = /[0-9]|\./;
+        var regex = /[\b]|[0-9]|\./;
         if( !regex.test(key) ) {
             theEvent.returnValue = false;
             if(theEvent.preventDefault) theEvent.preventDefault();

@@ -98,6 +98,7 @@ class AssetInformationsController extends AppController {
 	}
 
 	public function view($id = null) {
+            $this->set('assetID',$id);
 		if (!$this->AssetInformation->exists($id)) {
 			throw new NotFoundException(__('Invalid asset information'));
 		}
@@ -170,11 +171,11 @@ class AssetInformationsController extends AppController {
             if ($this->AssetInformation->save($this->request->data)) {
                 
                 $this->request->data['AssetInformation']['modified_by'] = $currentUser['name'];
-                $this->Session->setFlash(__('บันทึกข้อมูลเสร็จแล้ว'));
+                $this->Session->setFlash(__('บันทึกข้อมูลเสร็จแล้ว'), 'default', array('class' => 'alert alert-success'));
                 
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('การบันทึกข้อมูลเกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'));
+                $this->Session->setFlash(__('การบันทึกข้อมูลเกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'), 'default', array('class' => 'alert alert-danger'));
             }
         } else {
             $options = array('conditions' => array('AssetInformation.' . $this->AssetInformation->primaryKey => $id));
@@ -220,7 +221,7 @@ class AssetInformationsController extends AppController {
     }
 
     public function check_report() {
-        $this->autoRender = false;
+        
         if (!empty($this->request->data)) {
             $data = $this->request->data;
 
@@ -240,7 +241,7 @@ class AssetInformationsController extends AppController {
         }
     }
 
-    public function report_general() {
+    public function report_general() {   
         $this->set('assetInformations', $this->Paginator->paginate('AssetInformation'));
     }
 
