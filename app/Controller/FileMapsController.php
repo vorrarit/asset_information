@@ -56,22 +56,24 @@ class FileMapsController extends AppController {
 				 $photoId = $this->request->data['Photo']['id'];
 //				 debug($this->request->data);die();
             if ($this->isUploadedFile($photo)) {
-
+				
                 $ext = pathinfo($photo['name'], PATHINFO_EXTENSION);
                 $photo['FileMap']['file_map_path'] = '/img/photo';
                 $photo['FileMap']['file_map_file_type'] = $photo['type'];
 				$photo['FileMap']['asset_information_id'] = $assetInformationID;
-             
+					
+            
 //				pr($assetInformationID);
 //		pr($this->request->data);
 //		die();	
                 $this->FileMap->create();
 				$currentUser = $this->Session->read('Auth.User');
-				$this->request->data['FileMap']['created_by'] = $currentUser['name'];
-                if ($this->FileMap->save($photo)) {
+			    if ($this->FileMap->save($photo)) {
                     
                     $photo['FileMap']['file_map_name'] = 'photo_' . $assetInformationID . '_' . $this->FileMap->id . '.' . $ext;
                     $this->saveUploadFile($photo, 'img/filemap', $photo['FileMap']['file_map_name']);
+					$this->request->data['FileMap']['created_by'] = $currentUser['name'];
+				
                     $photo['FileMap']['id'] = $this->FileMap->id;
                     $this->FileMap->save($photo);
                     

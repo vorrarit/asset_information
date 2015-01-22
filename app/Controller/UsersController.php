@@ -137,20 +137,23 @@ class UsersController extends AppController {
 	 */
 	public function delete($id = null) {
 		$this->User->id = $id;
+		$user=$this->User->find('first',array('conditions' => array('User.id' => $id)));
+		
+		$username=$user['User']['username'];
+		
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 //		$this->request->allowMethod('post', 'delete');
-		debug($id);die();
-		if($id=0001){
+		if($username=='admin'){
 				$this->Session->setFlash(__('The user could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
-//		else{
-//		if ($this->User->delete()) {
-//			$this->Session->setFlash(__('The user has been deleted.'), 'default', array('class' => 'alert alert-success'));
-//		} else {
-//			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
-//		}}
+		else{
+		if ($this->User->delete()) {
+			$this->Session->setFlash(__('The user has been deleted.'), 'default', array('class' => 'alert alert-success'));
+		} else {
+			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+		}}
 		return $this->redirect(array('action' => 'index'));
 	}
 

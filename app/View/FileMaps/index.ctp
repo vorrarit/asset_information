@@ -28,10 +28,10 @@
                     </div>
                 </div>
             </div>
-	<h2><?php echo __('File Maps'); ?></h2>
+	<h2><?php echo __('เอกสารโฉนดที่ดิน'); ?></h2>
 	
 	<div class="btn-group pull-right" role="group" aria-label="...">
-		<?php echo $this->Form->button('<span class="glyphicon glyphicon-pencil"></span>',array('onclick'=>"window.location.href='../FileMaps/add'",'type'=>'button','escape'=>false, 'title'=>__('Add'), 'class'=>'btn btn-default')); ?>
+		<?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>',array('onclick'=>"window.location.href='../FileMaps/add'",'type'=>'button','escape'=>false, 'title'=>__('เพิ่มข้อมูล'), 'class'=>'btn btn-default')); ?> 
 	</div>
 	<table class="table table-hover">
 		<thead>
@@ -39,8 +39,6 @@
 				<th><?php echo $this->Paginator->sort('id'); ?></th>
 				<th><?php echo $this->Paginator->sort('asset_information_id'); ?></th>
 				<th><?php echo $this->Paginator->sort('file_map_name'); ?></th>
-				<th><?php echo $this->Paginator->sort('file_map_path'); ?></th>
-				<th><?php echo $this->Paginator->sort('file_map_file_type'); ?></th>
 				<th><?php echo $this->Paginator->sort('created_by'); ?></th>
 				<th><?php echo $this->Paginator->sort('modified_by'); ?></th>
 				<th class="actions"><?php echo __('Actions'); ?></th>
@@ -54,12 +52,10 @@
 			<?php echo $this->Html->link($fileMap['AssetInformation']['id'], array('controller' => 'asset_informations', 'action' => 'view', $fileMap['AssetInformation']['id'])); ?>
 				</td>
 				<td><?php echo h($fileMap['FileMap']['file_map_name']); ?>&nbsp;</td>
-				<td><?php echo h($fileMap['FileMap']['file_map_path']); ?>&nbsp;</td>
-				<td><?php echo h($fileMap['FileMap']['file_map_file_type']); ?>&nbsp;</td>
 				<td><?php echo h($fileMap['FileMap']['created_by']); ?>&nbsp;</td>
 				<td><?php echo h($fileMap['FileMap']['modified_by']); ?>&nbsp;</td>
 				<td class="actions">
-				<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $fileMap['FileMap']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $fileMap['FileMap']['id'])); ?>
+				<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"> ลบข้อมูล</span>', array('action' => 'delete', $fileMap['FileMap']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $fileMap['FileMap']['id'])); ?>
 
 				</td>
 			</tr>
