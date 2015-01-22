@@ -178,9 +178,10 @@
 							</td>
 							<td><?php echo h($assetInformation['AssetInformation']['asset_info_rai'].'-'.$assetInformation['AssetInformation']['asset_info_ngan'].'-'.$assetInformation['AssetInformation']['asset_info_square_wah']); ?>&nbsp;</td>
 							<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $assetInformation['AssetInformation']['id'])); ?>
 			<?php echo $this->Html->link('<span class="glyphicon glyphicon-pencil"></span>', array('action' => 'edit', $assetInformation['AssetInformation']['id']), array('title'=>__('Edit'), 'escape'=>false)); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $assetInformation['AssetInformation']['id']), array(), __('Are you sure you want to delete # %s?', $assetInformation['AssetInformation']['id'])); ?>
+			<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $assetInformation['AssetInformation']['id']), array('title'=>__('View'), 'escape'=>false)); ?>
+			<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $assetInformation['AssetInformation']['id']), array('title'=>__('Delete'), 'escape'=>false,__('Are you sure you want to delete # %s?', $assetInformation['AssetInformation']['id']))); ?>
+							
 							</td>
 						</tr>
 			<?php endforeach; ?>
