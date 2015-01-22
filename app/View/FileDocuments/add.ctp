@@ -1,9 +1,22 @@
 <div class="fileDocuments form">
 <?php echo $this->Form->create('FileDocument',array('type' => 'post','enctype' => 'multipart/form-data')); ?>
-	<fieldset>
+    <ol class="breadcrumb">
+        <li><a href="index" >จัดการทรัพย์สิน</a></li>
+        <li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
+    </ol>	
+    <div class="products form row">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="/AssetionInformation/edit/<?php echo $assetID;?>">แก้ไขข้อมูลทรัพย์</a></li>
+            <li role="presentation"><a href="/FileMaps/index/<?php  echo $assetID; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
+            <li role="presentation"><a href="/Photos/index/<?php echo $assetID; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+            <li role="presentation" class="active" ><a> เพิ่มเอกสารใช้ประโยชน์พื้นที่</a></li>
+ 
+        </ul>
+    </div>
+    <fieldset>
 		<legend><?php echo __('Add File Document'); ?></legend>
 	<?php
-		echo $this->Form->input('asset_information_id',array('readonly'=>'true'));
+		echo $this->Form->input('asset_information_id',array('type'=>'hidden'));
 		echo $this->Form->input('file_doc_name',array('type' => 'hidden'));
 		echo $this->Form->input('file_doc_path',array('type' => 'hidden'));
 		echo $this->Form->input('file_doc_file_type',array('type' => 'hidden'));
@@ -13,12 +26,4 @@
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
-<!--<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('List File Documents'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Asset Informations'), array('controller' => 'asset_informations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Asset Information'), array('controller' => 'asset_informations', 'action' => 'add')); ?> </li>
-	</ul>
-</div>-->
