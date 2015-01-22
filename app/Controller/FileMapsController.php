@@ -23,10 +23,13 @@ class FileMapsController extends AppController {
 	 *
 	 * @return void
 	 */
-	public function index() {
+	public function index($assetInformationID=null) {
+		$this->set('assetID',$assetInformationID);
 		$this->layout="carousel";
 		$this->FileMap->recursive = 0;
-		$this->set('fileMaps', $this->Paginator->paginate());
+		$this->set('fileMaps', $this->FileMap->find('all', array('conditions' => array('FileMap.asset_information_id' => $assetInformationID))));
+//		$this->set('fileMaps', $this->Paginator->paginate());
+		
 	}
 
 	/**
@@ -48,8 +51,10 @@ class FileMapsController extends AppController {
 	 * add method
 	 *
 	 * @return void
-	 */	
+	 */
 	public function add($assetInformationID=null) {
+		$id = $assetInformationID;
+				$this->set('id',$assetInformationID);
 		if(!empty($this->request->data)){
 		
 			 $photo = $this->request->data['fileMap']['filemap'];
@@ -60,7 +65,7 @@ class FileMapsController extends AppController {
                 $ext = pathinfo($photo['name'], PATHINFO_EXTENSION);
                 $photo['FileMap']['file_map_path'] = '/img/photo';
                 $photo['FileMap']['file_map_file_type'] = $photo['type'];
-				$photo['FileMap']['asset_information_id'] = $assetInformationID;
+				$photo['FileMap']['asset_information_id'] = $id;
 				$currentUser = $this->Session->read('Auth.User');
 				$photo['FileMap']['created_by'] = $currentUser['name'];
 				
@@ -77,7 +82,7 @@ class FileMapsController extends AppController {
                     $photo['FileMap']['id'] = $this->FileMap->id;
                     $this->FileMap->save($photo);
                     
-                    return $this->redirect(array('action' => 'index'));
+                    return $this->redirect(array('action' => 'index'.'/'.$assetInformationID));
                 } else {
                     
                     $this->Session->setFlash(__('The photo could not be saved. Please, try again.'));

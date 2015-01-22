@@ -5,6 +5,10 @@
 /tags
 myapp_cake_*
 *.log
+database.php
+/app/webroot/img/filemap/*.jpg
+/lib/Cake/*
+
 
 # OS generated files #
 ######################
