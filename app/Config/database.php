@@ -69,7 +69,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'postgres',
-		'password' => 'fzarzz',
+		'password' => '123456',
 		'database' => 'religious',
 		'prefix' => '',
 		'schema'=>'public',
