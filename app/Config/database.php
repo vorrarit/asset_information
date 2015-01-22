@@ -69,11 +69,11 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'postgres',
-		'password' => 'fzarzz',
+		'password' => 'password',
 		'database' => 'religious',
 		'prefix' => '',
 		'schema'=>'public',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8',
 	);
 
 	public $test = array(

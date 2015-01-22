@@ -1,21 +1,24 @@
 <div class="fileMaps form">
-<?php echo $this->Form->create('fileMap', array('type' => 'post','enctype' => 'multipart/form-data')); ?>
+<?php echo $this->Form->create('FileMap'); ?>
 	<fieldset>
 		<legend><?php echo __('Add File Map'); ?></legend>
 	<?php
 		echo $this->Form->input('asset_information_id');
-		echo $this->Form->input('file_map_name',array('type' => 'hidden'));
-		echo $this->Form->input('file_map_path',array('type' => 'hidden'));
-		echo $this->Form->input('file_map_file_type',array('type' => 'hidden'));
-		echo $this->Form->input('created_by',array('type' => 'hidden'));
-		echo $this->Form->input('modified_by',array('type' => 'hidden'));
-		
-                
+		echo $this->Form->input('file_map_name');
+		echo $this->Form->input('file_map_path');
+		echo $this->Form->input('file_map_file_type');
+		echo $this->Form->input('created_by');
+		echo $this->Form->input('modified_by');
 	?>
-		<input type="file" name="data[fileMap][filemap]" />
-                <?php echo 'Remark : File type (jpg,png,gif)'; ?>
-
 	</fieldset>
-    <?php echo $this->Form->button('Submit', array ('class' => 'btn btn-primary btn-form')); ?>
-<?php echo $this->Form->end(); ?>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+
+		<li><?php echo $this->Html->link(__('List File Maps'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Asset Informations'), array('controller' => 'asset_informations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Asset Information'), array('controller' => 'asset_informations', 'action' => 'add')); ?> </li>
+	</ul>
 </div>
