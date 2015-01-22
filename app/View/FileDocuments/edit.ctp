@@ -6,8 +6,8 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('asset_information_id');
 		echo $this->Form->input('file_doc_name');
-		echo $this->Form->input('file_doc_path');
-		echo $this->Form->input('file_doc_file_type');
+		echo $this->Form->input('file_doc_path',array('readonly'=>TRUE));
+		echo $this->Form->input('file_doc_file_type',array('readonly'=>TRUE));
 		echo $this->Form->input('created_by');
 	?>
 	</fieldset>

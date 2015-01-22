@@ -73,7 +73,7 @@ class DATABASE_CONFIG {
 		'database' => 'religious',
 		'prefix' => '',
 		'schema'=>'public',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8',
 	);
 
 	public $test = array(
