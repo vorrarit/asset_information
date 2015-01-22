@@ -23,10 +23,14 @@ class PhotosController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index($assetInformationId = null) {
+        $this->set('assetID',$assetInformationId);
         $this->layout="carousel";
         $this->Photo->recursive = 0;
-        $this->set('photos', $this->Paginator->paginate());
+        $this->set('photos', $this->Photo->find('all', array('conditions' => array('Photo.asset_information_id' => $assetInformationId))));
+//       $this->set('photos', $this->Paginator->paginate());
+        
+        
         
     }
 
@@ -52,10 +56,15 @@ class PhotosController extends AppController {
      */
     public function add($assetInformationId = null) {
 
+        $this->set('assetID',$assetInformationId);
+        
         if ($this->request->is('post')) {
 
             //$photoId = $this->request->data['Photo']['id'];
-                    $photo = $this->request->data['Photo']['photo'];
+                $photo = $this->request->data['Photo']['photo'];    
+                $createdUser = $this->Session->read('Auth.User');
+                
+                
             //debug($this->request->data); die;
             if ($this->isUploadedFile($photo)) {
                 
@@ -64,11 +73,9 @@ class PhotosController extends AppController {
                 $photo['Photo']['photo_path'] = '/img/photo';
                 $photo['Photo']['photo_file_type'] = $photo['type'];
                 $photo['Photo']['asset_information_id'] = $assetInformationId;
-                $photo['Photo']['created_by'] = $createdUser;
+                $photo['Photo']['created_by'] = $createdUser['username'];
                
                 $this->Photo->create();
-                $createdUser = $this->Session->read('Auth.User');
-                $photo['Photo']['created_by'] = $createdUser['username'];
                 
                 if ($this->Photo->save($photo)) {
                     
