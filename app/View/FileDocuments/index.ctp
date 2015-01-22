@@ -1,15 +1,18 @@
-<div class="fileDocuments index">
-    <h2><?php echo __('File Documents'); ?></h2>
-    <ol class="breadcrumb">
+<div class="row">
+	<br>
+	<ol class="breadcrumb">
         <li><a href="index" >จัดการทรัพย์สิน</a></li>
         <li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
     </ol>	
+</div>
+
+<div class="fileDocuments index">
     <div class="products form row">
         <ul class="nav nav-tabs">
             <li role="presentation"><a href="/AssetInformations/edit/<?php echo $assetID;?>">แก้ไขข้อมูลทรัพย์</a></li>
-            <li role="presentation"><a href="/Photos/index/<?php  echo $assetID; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
-            <li role="presentation"><a href="/FileMaps/index/<?php echo $assetID; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
-            <li role="presentation" class="active" ><a> เพิ่มเอกสารใช้ประโยชน์พื้นที่</a></li>
+            <li role="presentation" class="active" ><a>เพิ่มสำเนาโฉนดที่ดิน</a></li>
+            <li role="presentation"><a href="/Photos/index/<?php  echo $assetID; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+            <li role="presentation"><a href="/FileMaps/index/<?php echo $assetID; ?>"> เพิ่มเอกสารใช้ประโยชน์พื้นที่</a></li>
 
         </ul>
     </div>

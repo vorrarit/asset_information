@@ -1,7 +1,10 @@
-<ol class="breadcrumb">
-  <li><a href="../index">จัดการทรัพย์สิน</a></li>
-  <li class="active">แก้ไขข้อมูลทรัพย์สิน</li>
-</ol>
+<div class="row">
+	<br>
+	<ol class="breadcrumb">
+	  <li><a href="../index">จัดการทรัพย์สิน</a></li>
+	  <li class="active">แก้ไขข้อมูลทรัพย์สิน</li>
+	</ol>
+</div>
 
 
 <div class="products form row">
