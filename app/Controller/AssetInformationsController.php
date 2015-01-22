@@ -8,6 +8,7 @@ class AssetInformationsController extends AppController {
 	public $uses = array('AssetInformation', 'Province', 'District', 'SubDistrict', 'Utilization', 'ReligiousPlace');
 
 	public function index() {
+		echo 'test';
 		$utilizations = $this->Utilization->find('list', array('fields' => array('id', 'utilization_name')));
 		$religious = $this->ReligiousPlace->find('list', array('fields' => array('id', 'religious_place_name')));
 		if (!empty($this->request->data)) {
