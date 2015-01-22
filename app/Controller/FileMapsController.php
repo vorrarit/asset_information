@@ -23,10 +23,13 @@ class FileMapsController extends AppController {
 	 *
 	 * @return void
 	 */
-	public function index() {
+	public function index($assetInformationID=null) {
+		$this->set('assetID',$assetInformationID);
 		$this->layout="carousel";
 		$this->FileMap->recursive = 0;
-		$this->set('fileMaps', $this->Paginator->paginate());
+		$this->set('fileMaps', $this->FileMap->find('all', array('conditions' => array('FileMap.asset_information_id' => $assetInformationID))));
+//		$this->set('fileMaps', $this->Paginator->paginate());
+		
 	}
 
 	/**
@@ -50,34 +53,36 @@ class FileMapsController extends AppController {
 	 * @return void
 	 */
 	public function add($assetInformationID=null) {
+		$id = $assetInformationID;
+				$this->set('id',$assetInformationID);
 		if(!empty($this->request->data)){
 		
 			 $photo = $this->request->data['fileMap']['filemap'];
-				 $photoId = $this->request->data['Photo']['id'];
+				 //$photoId = $this->request->data['Photo']['id'];
 //				 debug($this->request->data);die();
             if ($this->isUploadedFile($photo)) {
 				
                 $ext = pathinfo($photo['name'], PATHINFO_EXTENSION);
                 $photo['FileMap']['file_map_path'] = '/img/photo';
                 $photo['FileMap']['file_map_file_type'] = $photo['type'];
-				$photo['FileMap']['asset_information_id'] = $assetInformationID;
-					
+				$photo['FileMap']['asset_information_id'] = $id;
+				$currentUser = $this->Session->read('Auth.User');
+				$photo['FileMap']['created_by'] = $currentUser['name'];
+				
             
 //				pr($assetInformationID);
 //		pr($this->request->data);
 //		die();	
                 $this->FileMap->create();
-				$currentUser = $this->Session->read('Auth.User');
+				
 			    if ($this->FileMap->save($photo)) {
-                    
+				
                     $photo['FileMap']['file_map_name'] = 'photo_' . $assetInformationID . '_' . $this->FileMap->id . '.' . $ext;
                     $this->saveUploadFile($photo, 'img/filemap', $photo['FileMap']['file_map_name']);
-					$this->request->data['FileMap']['created_by'] = $currentUser['name'];
-				
                     $photo['FileMap']['id'] = $this->FileMap->id;
                     $this->FileMap->save($photo);
                     
-                    return $this->redirect(array('action' => 'index'));
+                    return $this->redirect(array('action' => 'index'.'/'.$assetInformationID));
                 } else {
                     
                     $this->Session->setFlash(__('The photo could not be saved. Please, try again.'));

@@ -112,7 +112,7 @@
         </div>
         
         <div class ="row">
-            <?php echo $this->Form->input('asset_info_gps_coordinate',array('label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'))); ?>
+            <?php echo $this->Form->input('asset_info_gps_coordinate',array('onkeypress'=>'validate(event)','label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'))); ?>
         </div>
         
         <div class ="row">
@@ -133,8 +133,9 @@
         var theEvent = evt || window.event;
         var key = theEvent.keyCode || theEvent.which;
         key = String.fromCharCode( key );
-        var regex = /[0-9]|\./;
-        if( !regex.test(key) ) {
+        var regex = /[\b]|[0-9]|\./;
+        
+        if( !regex.test(key)) {
             theEvent.returnValue = false;
             if(theEvent.preventDefault) theEvent.preventDefault();
         }
