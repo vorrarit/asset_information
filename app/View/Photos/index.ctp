@@ -59,7 +59,7 @@
         </div>
     </div>
     <div align = "right" >
-        <a href="/photos/add" button title="Add" class="btn btn-default"><span class="glyphicon glyphicon-plus">&nbsp;Add</span></a>
+        <?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>',array('onclick'=>"window.location.href='/FileMaps/add/$assetID '",'type'=>'button','escape'=>false, 'title'=>__('เพิ่มข้อมูล'), 'class'=>'btn btn-default')); ?>
     </div>
     <table class="table table-hover">
         <thead>

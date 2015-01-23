@@ -70,7 +70,7 @@ class FileMapsController extends AppController {
 				$photo['FileMap']['created_by'] = $currentUser['name'];
 				
             
-//				pr($assetInformationID);
+//              pr($assetInformationID);
 //		pr($this->request->data);
 //		die();	
                 $this->FileMap->create();
