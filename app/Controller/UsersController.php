@@ -70,6 +70,9 @@ class UsersController extends AppController {
 	 */
 	public function add() {
 		if ($this->request->is('post')) {
+			$useradd =  $this->request->data['User']['username'];
+			$chkuseradd = $this->User->find('first',array('conditions' => array('User.username'=> trim($useradd))));
+			if(empty($chkuseradd)){
 			$this->User->create();
 			$currentUser = $this->Session->read('Auth.User');
 			$this->request->data['User']['created_by'] = $currentUser['name'];
@@ -80,6 +83,11 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
+			else {
+				$this->Session->setFlash(__('This Username could be used REASON:This username has been used already'), 'default', array('class' => 'alert alert-danger'));
+			
+			}
+			}
 		$userGroups = $this->User->UserGroup->find('list', array('empty' => '(Please Select)',
 			'fields' => array(
 				'UserGroup.id',
