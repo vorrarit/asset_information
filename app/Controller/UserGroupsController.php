@@ -72,6 +72,8 @@ class UserGroupsController extends AppController {
 			throw new NotFoundException(__('Invalid user group'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+			  $currentUser = $this->Session->read('Auth.User');
+            $this->request->data['UserGroup']['modified_by'] = $currentUser['name'];
 			if ($this->UserGroup->save($this->request->data)) {
 				$this->Session->setFlash(__('The user group has been saved.'));
 				return $this->redirect(array('action' => 'index'));

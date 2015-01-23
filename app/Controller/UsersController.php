@@ -74,8 +74,6 @@ class UsersController extends AppController {
 			$currentUser = $this->Session->read('Auth.User');
 			$this->request->data['User']['created_by'] = $currentUser['name'];
 			if ($this->User->save($this->request->data)) {
-				
-				
 				$this->Session->setFlash(__('The user has been saved.'), 'default', array('class' => 'alert alert-success'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
