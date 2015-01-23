@@ -30,7 +30,8 @@
 	<?php foreach ($assetInformations as $assetInformation): ?>
             <tr>
                 <td><?php echo $a ; ?>&nbsp;</td>
-                <td><?php echo h($assetInformation['AssetInformation']['asset_info_name']); ?>&nbsp;</td>
+                <td><?php echo $this->Html->link($assetInformation['AssetInformation']['asset_info_name'],
+                        array('controller' => 'asset_informations', 'action' => 'view', $assetInformation['AssetInformation']['id'])); ?>&nbsp;</td>
                 <td><?php echo h($assetInformation['SubDistrict']['sub_district_name']); ?>&nbsp;</td>
                 <td><?php echo h($assetInformation['District']['district_name']); ?>&nbsp;</td>
                 <td><?php echo h($assetInformation['Province']['province_name']); ?>&nbsp;</td>

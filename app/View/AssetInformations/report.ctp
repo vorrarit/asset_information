@@ -17,7 +17,7 @@
             
             <div class="checkbox-inline" style="margin-top: 30px">
                 <label>
-                    <input type="checkbox">แสดงรายงานทั้งหมด
+                    <input type="checkbox" name="checkbox">แสดงรายงานทั้งหมด
                 </label>
             </div>
          </div>
