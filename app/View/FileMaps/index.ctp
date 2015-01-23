@@ -11,7 +11,7 @@
 	<div class="products form row">
 
     <ul class="nav nav-tabs">
-        <li role="presentation" onclick="added()"><a href="/AssetInformations/edit/<?php echo $assetID; ?>">เพิ่มข้อมูลทรัพย์สิน</a></li>
+        <li role="presentation" onclick="added()"><a href="/AssetInformations/edit/<?php echo $assetID; ?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
         <li role="presentation"  onclick="added()"><a href="/FileDocuments/index/<?php echo $assetID; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
         <li role="presentation" onclick="added()"><a href="/Photos/index/<?php echo $assetID; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
         <li role="presentation" class="active" onclick="added()"><a href="#">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
