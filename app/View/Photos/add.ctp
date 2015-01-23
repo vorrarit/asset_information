@@ -1,3 +1,17 @@
+<ol class="breadcrumb">
+  <li><a href="index">จัดการทรัพย์สิน</a></li>
+  <li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
+</ol>
+<div class="products form row">
+
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="/AssetInformations/edit/<?php echo $assetID; ?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
+        <li role="presentation"><a href="/FileMaps/index/<?php echo $assetID; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
+        <li role="presentation" class = "active"><a>เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+        <li role="presentation"><a href="/FileDocuments/index/<?php echo $assetID; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
+    </ul>
+</div>
+
 <div class="photos form">
 <?php echo $this->Form->create('Photo', array('type' => 'post','enctype' => 'multipart/form-data')); ?>
     <fieldset>

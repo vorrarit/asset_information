@@ -73,6 +73,7 @@
 				'maxlength'=>'50',
 			'label'=> 'ทิศตะวันตก',
 			'div'=>array('class'=>'col-lg-4 form-group')));?>
+				</div>
 			</div>
 		</div>
 	</div>
