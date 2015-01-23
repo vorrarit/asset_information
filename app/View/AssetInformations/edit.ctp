@@ -10,10 +10,10 @@
 <div class="products form row">
 
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">แก้ไขข้อมูลทรัพย์สิน</a></li>
-        <li role="presentation"><a href="/FileDocuments/add/<?php echo $id; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
-        <li role="presentation"><a href="/Photos/add/<?php echo $id; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
-        <li role="presentation"><a href="/FileMaps/add/<?php echo $id; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
+        <li role="presentation" class="active"><a>แก้ไขข้อมูลทรัพย์สิน</a></li>
+        <li role="presentation"><a href="/FileDocuments/index/<?php echo $id; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
+        <li role="presentation"><a href="/Photos/index/<?php echo $id; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+        <li role="presentation"><a href="/FileMaps/index/<?php echo $id; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
     </ul>
 </div>
 

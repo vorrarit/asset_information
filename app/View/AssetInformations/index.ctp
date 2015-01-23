@@ -16,10 +16,10 @@
 
             <div class="checkbox-inline" style="margin-top: 30px">
                 <?php
-				echo $this->Form->checkbox('search_all', array(
-				'label'=> 'ค้นหาทั้งหมด'));
-				echo "ค้นหาทั้งหมด";
-				?>
+                        echo $this->Form->checkbox('search_all', array(
+                        'label'=> 'ค้นหาทั้งหมด'));
+                        echo "ค้นหาทั้งหมด";
+                        ?>
             </div>
         </div>
 		<div class ="row">
