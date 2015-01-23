@@ -56,8 +56,6 @@
                     </div>
                 </div>
             </div>
-	<h2><?php echo __('เอกสารการใช้ประโยชน์พื้นที่'); ?></h2>
-	
 	<div class="btn-group pull-right" role="group" aria-label="...">
 		<?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>',array('onclick'=>"window.location.href='/FileMaps/add/$assetID '",'type'=>'button','escape'=>false, 'title'=>__('เพิ่มข้อมูล'), 'class'=>'btn btn-default')); ?> 
 	</div>
