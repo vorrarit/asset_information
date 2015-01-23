@@ -3,7 +3,7 @@
 	<br>
 	<ol class="breadcrumb">
 		<li><a href="index">จัดการทรัพย์สิน</a></li>
-		<!--<li><a href="index">แก้ไขข้อมูลทรัพสินย์</a></li>-->
+                <li><a href="/AssetInformations/edit/<?php echo $assetID;?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
 		<li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
 	</ol>
 </div>
@@ -45,22 +45,19 @@
                 <div class="carousel carousel-navigation">
 
                      <ul>
-							<?php foreach ($photos as $photo){ ?>
-							<?php if($photo['Photo']['asset_information_id']==$assetID){?>
-								
-										<li><img src="<?php echo "/img/photo/".$photo['Photo']['photo_name'];?>" width="50" height="50" alt=""></li>
-							
-								
-							<?php } ?>
-						
-							<?php } ?>
+                            <?php foreach ($photos as $photo){ ?>
+                            <?php if($photo['Photo']['asset_information_id']==$assetID){?>
+
+                                <li><img src="<?php echo "/img/photo/".$photo['Photo']['photo_name'];?>" width="50" height="50" alt=""></li>
+
+                            <?php } ?>
+
+                            <?php } ?>
                         </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <h2><?php echo __('Photos'); ?></h2>
     <div align = "right" >
         <a href="/photos/add" button title="Add" class="btn btn-default"><span class="glyphicon glyphicon-plus">&nbsp;Add</span></a>
     </div>
