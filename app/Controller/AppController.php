@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
     public $components = array('Session', 'Paginator', 'Auth' => array(
-            'loginRedirect' => '/Users/index',
+            'loginRedirect' => '/AssetInformations/index',
             'logoutRedirect' => '/Users/login',
             'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish')),
             'authorize' => array('Controller')));

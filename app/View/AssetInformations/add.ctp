@@ -1,7 +1,11 @@
+<br>
+<div class="row">
 <ol class="breadcrumb">
   <li><a href="index">จัดการทรัพย์สิน</a></li>
   <li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
 </ol>
+</div>
+
 <div class="products form row">
 
     <ul class="nav nav-tabs">
@@ -112,7 +116,11 @@
         </div>
         
         <div class ="row">
-            <?php echo $this->Form->input('asset_info_gps_coordinate',array('onkeypress'=>'validate(event)','label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'))); ?>
+            <?php echo $this->Form->input('asset_info_gps_coordinate',array('onkeypress'=>'validate(event)','label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'), 
+				'wrap'=>'input-group',
+				'afterInput'=>'<span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#myMapModal" class="btn btn-default"><span class="glyphicon glyphicon-globe"></span></button></span>')); ?>
+			
+
         </div>
         
         <div class ="row">
@@ -128,6 +136,50 @@
     <?php echo $this->Form->button(__('ยกเลิก'),array('onclick'=>"window.location.href='/AssetInformations/index'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>
  <?php echo $this->Form->end(); ?>
 </div>
+
+<style type="text/css">
+	#map-canvas {
+		width:568px;
+		height:480px;
+	}
+</style>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myMapModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Modal title</h4>
+
+            </div>
+            <div class="modal-body">
+                <div id="map-canvas" class=""></div>
+				<form>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="input-group">
+								<input type="text" id="txtGeoCoderSearch" class="form-control" placeholder="Search for location...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" id="btnGeoCoderSearch">Go!</button>
+								</span>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+					</div>
+				</form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-form" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <script type="text/javascript">
     function validate(evt) {
         var theEvent = evt || window.event;
@@ -175,4 +227,67 @@
     }
 
     
+</script>
+
+
+<script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+<script type="text/javascript">
+
+var map = null;
+var marker = new google.maps.Marker();
+function initialize() {
+	var mapOptions = {
+		zoom: 8,
+		center: new google.maps.LatLng(-34.397, 150.644),
+		disableDoubleClickZoom: true,
+		draggable: true,
+		scrollwheel: false,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	map = new google.maps.Map(document.getElementById('map-canvas'),
+		mapOptions);
+	google.maps.event.addListener(map, 'dblclick', function (event) {
+		marker.setPosition(event.latLng);
+		marker.setMap(map);
+		
+		$("#AssetInformationAssetInfoGpsCoordinate").val(event.latLng);
+		return false;
+	});
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function resizeMap() {
+	if (typeof map == "undefined")
+		return;
+	setTimeout(function () {
+		resizingMap();
+		}, 400);
+}
+
+function resizingMap() {
+	if (typeof map == "undefined")
+		return;
+	var center = map.getCenter();
+	google.maps.event.trigger(map, "resize");
+	map.setCenter(center);
+}
+
+$('#myMapModal').on('show.bs.modal', function (event) {
+	resizeMap();
+});
+
+$('#btnGeoCoderSearch').click(function() {
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode( { 'address': $('#txtGeoCoderSearch').val() }, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			map.setCenter(results[0].geometry.location);
+			marker.setPosition(results[0].geometry.location);
+			marker.setMap(map);
+			$("#AssetInformationAssetInfoGpsCoordinate").val(results[0].geometry.location);
+		}
+	});
+});
+
 </script>

@@ -1,8 +1,13 @@
-<ol class="breadcrumb">
-	<li>จัดการทรัพย์สิน</li>
-	<li class="active">ค้นหาข้อมูลทรัพย์สินแบบทั่วไป</li>
-</ol>
-<div class="assetInformations form">
+<br>
+
+<div class="row">
+	<ol class="breadcrumb">
+		<li>จัดการทรัพย์สิน</li>
+		<li class="active">ค้นหาข้อมูลทรัพย์สินแบบทั่วไป</li>
+	</ol>
+</div>
+
+<div class="assetInformations form row">
     <?php echo $this->Form->create('AssetInformation',array('action'=>'index')); ?>
     <div class="form-group">
         <div class ="row">
@@ -73,92 +78,91 @@
 				'maxlength'=>'50',
 			'label'=> 'ทิศตะวันตก',
 			'div'=>array('class'=>'col-lg-4 form-group')));?>
-				</div>
 			</div>
 		</div>
-	</div>
-	<div class ="row">
-            <?php
-            echo $this->Form->input('province_id', array(
-					'label'=> 'จังหวัด',
-					'empty'=>'กรุณาเลือก',
-					'onchange'=>'province_Changed()',
-					'div'=>array('class'=>'col-lg-4 form-group')));
-            echo $this->Form->input('district_id', array(
-					'label'=> 'เขต/อำเภอ',
-					'empty'=>'กรุณาเลือก',
-					'onchange'=>'district_Changed()',
-					'div'=>array('class'=>'col-lg-4 form-group')));
-            ?>
-	</div>
-	<div class ="row">
-            <?php  
-            echo $this->Form->input('sub_district_id', array(
-					'label'=> 'แขวง/ตำบล',
-					'empty'=>'กรุณาเลือก',
-					'div'=>array('class'=>'col-lg-4 form-group')));
+		<div class ="row">
+				<?php
+				echo $this->Form->input('province_id', array(
+						'label'=> 'จังหวัด',
+						'empty'=>'กรุณาเลือก',
+						'onchange'=>'province_Changed()',
+						'div'=>array('class'=>'col-lg-4 form-group')));
+				echo $this->Form->input('district_id', array(
+						'label'=> 'เขต/อำเภอ',
+						'empty'=>'กรุณาเลือก',
+						'onchange'=>'district_Changed()',
+						'div'=>array('class'=>'col-lg-4 form-group')));
+				?>
+		</div>
+		<div class ="row">
+				<?php  
+				echo $this->Form->input('sub_district_id', array(
+						'label'=> 'แขวง/ตำบล',
+						'empty'=>'กรุณาเลือก',
+						'div'=>array('class'=>'col-lg-4 form-group')));
 
-            echo $this->Form->input('utilization_id',array(
-					'label'=> 'การใช้ประยชน์',
-					'empty'=>'กรุณาเลือก',
-					'div'=>array('class'=>'col-lg-4 form-group')));
-            ?>
-	</div> 
-	<div class ="row">
-			<?php  
-				echo $this->Form->input('religious_place_id',array(
-					'label'=> 'ศาสนสถาน',
-					'empty'=>'กรุณาเลือก',
-					'div'=>array('class'=>'col-lg-4 form-group')));
-            ?>
+				echo $this->Form->input('utilization_id',array(
+						'label'=> 'การใช้ประยชน์',
+						'empty'=>'กรุณาเลือก',
+						'div'=>array('class'=>'col-lg-4 form-group')));
+				?>
+		</div> 
+		<div class ="row">
+				<?php  
+					echo $this->Form->input('religious_place_id',array(
+						'label'=> 'ศาสนสถาน',
+						'empty'=>'กรุณาเลือก',
+						'div'=>array('class'=>'col-lg-4 form-group')));
+				?>
+		</div>
+		<div class ="row">
+				<?php echo $this->Form->input('asset_info_cost_estimate', array(
+						'maxlength'=>'50',
+						'onkeypress'=>'validate(event)',
+						'label'=> 'ราคาประเมิน',
+						'div'=>array('class'=>'col-lg-4 form-group')));?>
+			<label style="margin-top: 30px">บาทต่อตารางวา</label>
+		</div>
+		<div class ="row">
+				<?php echo $this->Form->input('asset_info_rai', array(
+						'maxlength'=>'50',
+						'onkeypress'=>'validate(event)',
+						'label'=> 'ไร่',
+						'maxlength'=>'4',
+						'div'=>array('class'=>'col-lg-2 form-group')));?>
+				<?php echo $this->Form->input('asset_info_ngan', array(
+						'maxlength'=>'50',
+						'onkeypress'=>'validate(event)',
+						'label'=> 'งาน',
+						'maxlength'=>'4',
+						'div'=>array('class'=>'col-lg-2 form-group')));?>
+				<?php echo $this->Form->input('asset_info_square_wah', array(
+						'maxlength'=>'50',
+						'onkeypress'=>'validate(event)',
+						'label'=> 'ตารางวา',
+						'maxlength'=>'4',
+						'div'=>array('class'=>'col-lg-2 form-group')));?>
+		</div>
 	</div>
-	<div class ="row">
-            <?php echo $this->Form->input('asset_info_cost_estimate', array(
-					'maxlength'=>'50',
-					'onkeypress'=>'validate(event)',
-					'label'=> 'ราคาประเมิน',
-					'div'=>array('class'=>'col-lg-4 form-group')));?>
-		<label style="margin-top: 30px">บาทต่อตารางวา</label>
-	</div>
-	<div class ="row">
-			<?php echo $this->Form->input('asset_info_rai', array(
-					'maxlength'=>'50',
-					'onkeypress'=>'validate(event)',
-					'label'=> 'ไร่',
-					'maxlength'=>'4',
-					'div'=>array('class'=>'col-lg-2 form-group')));?>
-            <?php echo $this->Form->input('asset_info_ngan', array(
-					'maxlength'=>'50',
-					'onkeypress'=>'validate(event)',
-					'label'=> 'งาน',
-					'maxlength'=>'4',
-					'div'=>array('class'=>'col-lg-2 form-group')));?>
-            <?php echo $this->Form->input('asset_info_square_wah', array(
-					'maxlength'=>'50',
-					'onkeypress'=>'validate(event)',
-					'label'=> 'ตารางวา',
-					'maxlength'=>'4',
-					'div'=>array('class'=>'col-lg-2 form-group')));?>
-	</div>
-	<div class="col-lg-12 form-group">
-		<?php echo $this->Form->button('<span class="glyphicon glyphicon-search"></span>&nbsp;' . __('ค้นหา'),array('type'=>'submit', 'class'=>'btn btn-primary btn-form')); ?>
-		<?php echo $this->Form->button(__('ยกเลิก'), array('onclick'=>"window.location.href='../AssetInformations/index'",'type'=>'button', 'class'=>'btn btn-default btn-form')); ?>
-	</div>
+
+	<?php echo $this->Form->button('<span class="glyphicon glyphicon-search"></span>&nbsp;' . __('ค้นหา'),array('type'=>'submit', 'class'=>'btn btn-primary btn-form')); ?>
+	<?php echo $this->Form->button(__('ยกเลิก'), array('onclick'=>"window.location.href='../AssetInformations/index'",'type'=>'button', 'class'=>'btn btn-default btn-form')); ?>
+	<?php echo $this->Form->end(); ?>
 </div>
-<?php echo $this->Form->end(); ?>
-<div class="assetInformations index">
+
+<div class="assetInformations index row">
 	<h1><?php echo __('ผลการค้นหา'); ?></h1>
 	<table cellpadding="0" cellspacing="0" width = "100%" class="table">
 		<thead>
 			<tr>
-				<th><?php echo $this->Paginator->sort('id','ลำดับ'); ?></th>
+				<th width="50"><?php echo $this->Paginator->sort('id','ลำดับ'); ?></th>
 				<th><?php echo $this->Paginator->sort('asset_info_name','รายชื่อ ศบ/วัดร้าง'); ?></th>
 				<th><?php echo $this->Paginator->sort('sub_district_id','แขวง'); ?></th>
 				<th><?php echo $this->Paginator->sort('district_id','เขต'); ?></th>
 				<th><?php echo $this->Paginator->sort('province_id','จังหวัด'); ?></th>
 				<th><?php echo $this->Paginator->sort('asset_info_title_deed_no','โฉนดเลขที่'); ?></th>
 				<th><?php echo $this->Paginator->sort('asset_area','เนื้อที่'); ?></th>
-				<th class="actions"><?php echo __('เอกสาร'); ?></th></tr>
+				<th class="actions" width="80"><?php echo __('เอกสาร'); ?></th></tr>
 		</thead>
 		<tbody>
 	<?php foreach ($assetInformations as $assetInformation): ?>
@@ -204,6 +208,54 @@
 	?>
 </div>
 </div>
+
+<style type="text/css">
+	#map-canvas {
+		width:568px;
+		height:480px;
+	}
+</style>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myMapModal">
+	Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myMapModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Modal title</h4>
+
+            </div>
+            <div class="modal-body">
+                <div id="map-canvas" class=""></div>
+				<form>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="input-group">
+								<input type="text" id="txtGeoCoderSearch" class="form-control" placeholder="Search for location...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" id="btnGeoCoderSearch">Go!</button>
+								</span>
+							</div><!-- /input-group -->
+						</div><!-- /.col-lg-6 -->
+					</div>
+				</form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-form" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <script language="JavaScript">
 	document.forms[0].elements['data[AssetInformation][district_id]'].options.length = 1;
     document.forms[0].elements['data[AssetInformation][sub_district_id]'].options.length = 1;
@@ -257,6 +309,70 @@
 		}
 	}
 </script>
+
+
+
+
+<script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+<script type="text/javascript">
+
+var map = null;
+var marker = new google.maps.Marker();
+function initialize() {
+	var mapOptions = {
+		zoom: 8,
+		center: new google.maps.LatLng(-34.397, 150.644),
+		disableDoubleClickZoom: true,
+		draggable: true,
+		scrollwheel: false,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	map = new google.maps.Map(document.getElementById('map-canvas'),
+		mapOptions);
+	google.maps.event.addListener(map, 'dblclick', function (event) {
+		marker.setPosition(event.latLng);
+		marker.setMap(map);
+		return false;
+	});
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function resizeMap() {
+	if (typeof map == "undefined")
+		return;
+	setTimeout(function () {
+		resizingMap();
+		}, 400);
+}
+
+function resizingMap() {
+	if (typeof map == "undefined")
+		return;
+	var center = map.getCenter();
+	google.maps.event.trigger(map, "resize");
+	map.setCenter(center);
+}
+
+$('#myMapModal').on('show.bs.modal', function (event) {
+	resizeMap();
+});
+
+$('#btnGeoCoderSearch').click(function() {
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode( { 'address': $('#txtGeoCoderSearch').val() }, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			map.setCenter(results[0].geometry.location);
+			marker.setPosition(results[0].geometry.location);
+			marker.setMap(map);
+		}
+	});
+});
+
+</script>
+
+
 
 
 
