@@ -43,7 +43,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	echo $this->fetch('script');
 	?>
 </head>
-
+<style type="text/css">
+body {
+	background-color: #cb5614;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-image: url(/img/bglogin.png);
+	background-position: center;
+}
+</style>
 <body>
 	
     <div class="container">

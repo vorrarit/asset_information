@@ -1,34 +1,45 @@
-			<div class="navbar-default sidebar" role="navigation">
-				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
-						
-						<!--
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search..." id="txtSidebarSearch">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="btnSidebarSearch">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
-						</li>
-						-->
-						<li>
-							<a href="/AssetInformations/index"><i class="fa fa-dashboard fa-fw"></i><?php echo __('Asset Informations'); ?></a>
-						</li>
-						<li>
-							<a href="/AssetInformations/add"><i class="fa fa-dashboard fa-fw"></i><?php echo __('Asset Add'); ?></a>
-						</li>
-						<li>
-							<a href="/AssetInformations/report"><i class="fa fa-dashboard fa-fw"></i><?php echo __('Asset Report'); ?></a>
-						</li>
-					</ul>
+<div class="navbar-default sidebar" role="navigation">
+	<div class="sidebar-nav navbar-collapse">
+		<ul class="nav" id="side-menu">
+			<p>
+			<center>
+				<img src="/img/Hewlett_Packard_logo.png" width="50%" height="auto;">
+			</center>
+		
+			<li class="sidebar-search">
+				<div class="input-group custom-search-form">
+					<input type="text" class="form-control" placeholder="Search...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+					</span>
 				</div>
-				<!-- /.sidebar-collapse -->
-			</div>
+			  <!-- /input-group --> 
+			</li>
 
-
+			<li> <a href="#"><img src="/img/icon01.png"  width="25" height="24" > จัดการทรัพย์สิน</a>
+				<ul class="nav nav-second-level">
+					<li><a href="/AssetInformations/index"><?php echo __('ข้อมูลทรัพย์สิน'); ?></a></li>
+					<li><a href="/AssetInformations/add"><?php echo __('เพิ่มข้อมูลทรัพย์สิน'); ?></a></li>
+					<li><a href="/AssetInformations/report"><?php echo __('รายงานทรัพย์สิน'); ?></a></li>
+				</ul>
+			</li>
+			<li> <a href="#"><img src="/img/icon02.png" width="25" height="24">นิติกรรมและสัญญา</a>
+				<ul class="nav nav-second-level">
+				<!--<li> <a href="#">xxxxxxxxxxx</a> </li>
+				<li> <a href="#">xxxxxxxxxxx</a> </li>
+				<li> <a href="#">xxxxxxxxxxx</a> </li>-->
+				</ul>
+			</li>
+			<li> <a href="#"><img src="/img/icon03.png" width="25" height="23">บัญชีและการเงิน</a>
+				<ul class="nav nav-second-level">
+				<!--<li> <a href="#">xxxxxxxxxxx</a> </li>
+				<li> <a href="#">xxxxxxxxxxx</a> </li>
+				<li> <a href="#">xxxxxxxxxxx</a> </li>-->
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
 
 <script type="text/javascript">
 $("#btnSidebarSearch").click(function() {
