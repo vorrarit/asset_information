@@ -1,143 +1,268 @@
 <div class="row">
-	<br>
-	<ol class="breadcrumb">
-	  <li><a href="../index">จัดการทรัพย์สิน</a></li>
-	  <li class="active">แก้ไขข้อมูลทรัพย์สิน</li>
-	</ol>
+    <div class="col-lg-12">
+        <h5 class="page-header">จัดการทรัพย์สิน &gt; ข้อมูลทรัพย์สิน &gt; แก้ไขรายละเอียดทรัพย์สิน</h5>
+    </div>
 </div>
 
-
-<div class="products form row">
-
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a>แก้ไขข้อมูลทรัพย์สิน</a></li>
-        <li role="presentation"><a href="/FileDocuments/index/<?php echo $id; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
-        <li role="presentation"><a href="/Photos/index/<?php echo $id; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
-        <li role="presentation"><a href="/FileMaps/index/<?php echo $id; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
-    </ul>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a>แก้ไขข้อมูลทรัพย์สิน</a></li>
+            <li role="presentation"><a href="/FileDocuments/index/<?php echo $id; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
+            <li role="presentation"><a href="/Photos/index/<?php echo $id; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+            <li role="presentation"><a href="/FileMaps/index/<?php echo $id; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
+        </ul>
+    </div>
 </div>
-
-<div class="assetInformations form">
+<br>
+<div class="assetInformations form-horizontal">
 <?php echo $this->Form->create('AssetInformation'); ?>
     <fieldset>
-        <?php echo $this->Form->input('id',array('type'=>'hidden','value'=>$id));?>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_name',array('label'=>'ชื่อศาสนสมบัติ' , 'required'=>true ,'maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
-	</div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_title_deed_no',array('label'=>'เลขที่โฉนด', 'required'=>true,'maxlength'=>'6','div'=>array('class'=>'col-lg-6 form-group')));?>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">ชื่อศาสนสมบัติ : </label>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_mapsheet_no',array('label'=>'ระวาง' ,'maxlength'=>'30' ,'div'=>array('class'=>'col-lg-6 form-group')));?>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_name',array('label'=> FALSE , 'required'=>true ,'maxlength'=>'50'));?>
+            </div>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_parcel_no',array('label'=>'เลขที่ดิน','maxlength'=>'10','div'=>array('class'=>'col-lg-6 form-group')));?>
+
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">เลขที่โฉนด: </label>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_dealing_file_no',array('label'=>'หน้าสำรวจ','maxlength'=>'6','div'=>array('class'=>'col-lg-6 form-group')));?>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_title_deed_no',array('label'=> False, 'required'=>true,'maxlength'=>'6'));?>
+            </div>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_boundary',array('label'=>'เขตติดต่อ','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group')));?>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">ระวาง: </label>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_north',array('label'=>'ทิศเหนือ','maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_mapsheet_no',array('label'=> False, 'required'=>true,'maxlength'=>'30'));?>
+            </div>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_south',array('label'=>'ทิศใต้','maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">เลขที่ดิน: </label>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_east',array('label'=>'ทิศตะวันออก','maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_parcel_no',array('label'=> False,'maxlength'=>'10'));?>
+            </div>
         </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_west',array('label'=>'ทิศตะวันตก','maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">หน้าสำรวจ: </label>
         </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_dealing_file_no',array('label'=> False,'maxlength'=>'6'));?>
+            </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">เขตติดต่อ: </label>
+        </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_Boundary',array('label'=> False,'maxlength'=>'30'));?>
+            </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">ทิศเหนือ: </label>
+        </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_north',array('label'=> False,'maxlength'=>'50'));?>
+            </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">ทิศใต้: </label>
+        </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_south',array('label'=> False,'maxlength'=>'50'));?>
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">ทิศตะวันออก: </label>
+        </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_east',array('label'=> False,'maxlength'=>'50'));?>
+            </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">ทิศตะวันตก: </label>
+        </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_west',array('label'=> False,'maxlength'=>'50'));?>
+            </div>
+        </div>
+
         <div class ="row">
+            <div class="col-lg-2">
+                <label class="control-label right">จังหวัด: </label>
+            </div>
+            <div class="col-lg-4">
             <?php
             echo $this->Form->input('province_id', array(
                     'empty'=>'กรุณาเลือก',
                     'onchange'=>'province_Changed()',
-                    'label'=> 'จังหวัด',
-                    'required'=>true,
-                    'div'=>array('class'=>'col-lg-6 form-group')
+                    'label'=> FALSE,
+                    'required'=>true
                     ));
             ?>
+            </div>
         </div>
+        
         <div class ="row">
+            <div class="col-lg-2">
+                <label class="control-label right">เขต/อำเภอ: </label>
+            </div>
+            <div class="col-lg-4">
             <?php
             echo $this->Form->input('district_id', array(
                     'empty'=>'กรุณาเลือก',
                     'onchange'=>'district_Changed()',
-                    'label'=> 'เขต/อำเภอ',
-                    'required'=>true,
-                    'div'=>array('class'=>'col-lg-6 form-group')
+                    'label'=> FALSE,
+                    'required'=>true
                     ));
             ?>
+            </div>
         </div>
+        
         <div class ="row">
+            <div class="col-lg-2">
+                <label class="control-label right">แขวง/ตำบล: </label>
+            </div>
+            <div class="col-lg-4">
             <?php
             echo $this->Form->input('sub_district_id', array(
                     'empty'=>'กรุณาเลือก',
-                    'label'=> 'แขวง/ตำบล',
-                    'required'=>true,
-                    'div'=>array('class'=>'col-lg-6 form-group')
+                    'label'=> FALSE,
+                    'required'=>true
                     ));
             ?>
+            </div>
         </div>
+        
         <div class ="row">
+            <div class="col-lg-2">
+                <label class="control-label right">การใช้ประโยชน์: </label>
+            </div>
+            <div class="col-lg-4">
             <?php
             echo $this->Form->input('utilization_id', array(
                     'empty'=>'กรุณาเลือก',
-                    'label'=> 'การใช้ประโยชน์',
-                    'required'=>true,
-                    'div'=>array('class'=>'col-lg-6 form-group')
+                    'label'=> FALSE,
+                    'required'=>true
                     ));
             ?>
+            </div>
         </div>
+        
+        
         <div class ="row">
+            <div class="col-lg-2">
+                <label class="control-label right">ศาสนสถาน: </label>
+            </div>
+            <div class="col-lg-4">
             <?php
             echo $this->Form->input('religious_place_id', array(
                     'empty'=>'กรุณาเลือก',
-                    'label'=> 'ศาสนสถาน',
-                    'required'=>true,
-                    'div'=>array('class'=>'col-lg-6 form-group')
+                    'label'=> FALSE,
+                    'required'=>true
                     ));
             ?>
-        </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=>'ราคาประเมิน' ,'div'=>array('class'=>'col-lg-4 form-group')));?>
-            <label style="margin-top: 30px">บาทต่อตารางวา</label>
-            <label style="margin-left: 48px"><a href = 'http://property.treasury.go.th/pvmwebsite/' target='_blank''><span class='glyphicon glyphicon-hand-right'>  ตรวจสอบราคาประเมิน</a></span></label>
-            
-        </div>
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_rai',array('onkeypress'=>'validate(event)','label'=>'ไร่' ,'maxlength'=>'4','div'=>array('class'=>'col-lg-2 form-group')));?>
-            <?php echo $this->Form->input('asset_info_ngan',array('onkeypress'=>'validate(event)','label'=>'งาน','maxlength'=>'2','div'=>array('class'=>'col-lg-2 form-group')));?>
-            <?php echo $this->Form->input('asset_info_square_wah',array('onkeypress'=>'validate(event)','label'=>'ตารางวา','maxlength'=>'4','div'=>array('class'=>'col-lg-2 form-group')));?>
-            
+            </div>
         </div>
         
         <div class ="row">
-            <?php echo $this->Form->input('asset_info_gps_coordinate',array('onkeypress'=>'validate(event)','label'=>'พิกัด GPS','maxlength'=>'30','div'=>array('class'=>'col-lg-6 form-group'), 
+            <div class="col-md-2">
+                <label class="control-label right">ราคาประเมิน: </label>
+            </div>
+            <div class="col-md-2">
+                <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=> FALSE));?>
+            </div>
+            <div class="col-md-2">
+                <label class="control-label left">บาทต่อตารางวา</label>
+            </div>
+            <div class="col-md-3">
+                <label class="control-label left"><a href = 'http://property.treasury.go.th/pvmwebsite/' target='_blank''><span class='glyphicon glyphicon-hand-right'>  ตรวจสอบราคาประเมิน</a></span></label>
+            </div>
+        </div>
+        
+        <div class ="row">
+            <div class="col-md-2">
+                <label class="control-label right">เนื้อที่: </label>
+            </div>
+            <div class="col-md-1">
+                <?php echo $this->Form->input('asset_info_rai',array('onkeypress'=>'validate(event)','label'=> FALSE ,'maxlength'=>'4'));?>
+            </div>
+            <div>
+                <label class="control-label left">&nbsp;&nbsp;ไร่ &nbsp;&nbsp;</label>
+            </div>
+            
+            <div class="col-md-1">
+                <?php echo $this->Form->input('asset_info_ngan',array('onkeypress'=>'validate(event)','label'=> FALSE ,'maxlength'=>'2'));?>
+            </div>
+            <div>
+                <label class="control-label left">&nbsp;&nbsp;งาน &nbsp;&nbsp;</label>
+            </div>
+            
+            <div class="col-md-1">
+                <?php echo $this->Form->input('asset_info_square_wah',array('onkeypress'=>'validate(event)','label'=> FALSE ,'maxlength'=>'4'));?>
+            </div>
+            <div>
+                <label class="control-label left">&nbsp;&nbsp;ตารางวา &nbsp;&nbsp;</label>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">พิกัด GPS: </label>
+        </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_gps_coordinate',array('onkeypress'=>'validate(event)','label'=>FALSE,'maxlength'=>'30', 
 				'wrap'=>'input-group',
-				'afterInput'=>'<span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#myMapModal" class="btn btn-default"><span class="glyphicon glyphicon-globe"></span></button></span>')); ?>
+				'afterInput'=>'<span class="input-group-btn" ><button type="button" data-toggle="modal" data-target="#myMapModal" class="btn btn-default" style="padding-bottom: 7px;"><span class="glyphicon glyphicon-globe"></span></button></span>')); ?>
+            </div>
         </div>
         
-        <div class ="row">
-            <?php echo $this->Form->input('asset_info_remark',array('label'=>'หมายเหตุ','maxlength'=>'50','div'=>array('class'=>'col-lg-6 form-group')));?>
+        <div class="row">
+        <div class="col-lg-2">
+          <label class="control-label right">หมายเหตุ: </label>
         </div>
+            <div class="col-lg-4">
+                <?php echo $this->Form->input('asset_info_remark',array('label'=> False,'maxlength'=>'50'));?>
+            </div>
+        </div>
+        
         
         <?php echo $this->Form->input('created_by',array('type'=>'hidden'));?>
         <?php echo $this->Form->input('modified_by',array('type'=>'hidden'));?>
         
-
     </fieldset>
-    <?php echo $this->Form->button(__('บันทึก'),array('type'=>'submit','class'=>'btn btn-primary btn-form')); ?>
-    <?php echo $this->Form->postLink(__('ลบข้อมูล'),array('action'=>'delete', $this->data['AssetInformation']['id']), array('inline'=>false, 'class'=>'btn btn-default'), __('Are you sure you want to delete # %s?', $this->data['AssetInformation']['id']));?>
-    <?php echo $this->Form->button(__('ยกเลิก'),array('onclick'=>"window.location.href='/AssetInformations/index'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>
-    
-    <?php echo $this->Form->end(); ?>
-    <?php echo $this->fetch('postLink'); ?>
-  </div>
+     <div class="row">
+        <div class="col-lg-2"></div>
+        <?php echo $this->Form->button(__('บันทึก'),array('type'=>'submit','class'=>'btn btn-primary btn-form')); ?>
+        <?php echo $this->Form->postLink(__('ลบข้อมูล'),array('action'=>'delete', $this->data['AssetInformation']['id']), array('inline'=>false, 'class'=>'btn btn-default'), __('Are you sure you want to delete # %s?', $this->data['AssetInformation']['id']));?>
+        <?php echo $this->Form->button(__('ยกเลิก'),array('onclick'=>"window.location.href='/AssetInformations/index'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>
+     </div>
+     <?php echo $this->Form->end(); ?>
+     <?php echo $this->fetch('postLink'); ?>
+</div>
 
 <style type="text/css">
 	#map-canvas {
@@ -164,7 +289,7 @@
 							<div class="input-group">
 								<input type="text" id="txtGeoCoderSearch" class="form-control" placeholder="Search for location...">
 								<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="btnGeoCoderSearch">Go!</button>
+									<button class="btn btn-default" style="padding-bottom: 7px;" type="button" id="btnGeoCoderSearch">Go!</button>
 								</span>
 							</div><!-- /input-group -->
 						</div><!-- /.col-lg-6 -->
