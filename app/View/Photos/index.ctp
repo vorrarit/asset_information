@@ -4,7 +4,7 @@
 	<ol class="breadcrumb">
 		<li><a href="index">จัดการทรัพย์สิน</a></li>
                 <li><a href="/AssetInformations/edit/<?php echo $assetID;?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
-		<li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
+		<li class="active">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</li>
 	</ol>
 </div>
 
@@ -58,37 +58,29 @@
             </div>
         </div>
     </div>
-    <div align = "right" >
-        <?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>',array('onclick'=>"window.location.href='/FileMaps/add/$assetID '",'type'=>'button','escape'=>false, 'title'=>__('เพิ่มข้อมูล'), 'class'=>'btn btn-default')); ?>
-    </div>
+    <div class="btn-group pull-right" role="group" aria-label="...">
+			<?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>', array('onclick' => "window.location.href='/Photos/add/$assetID '", 'type' => 'button', 'escape' => false, 'title' => __('เพิ่มข้อมูล'), 'class' => 'btn btn-default')); ?> 
+		</div>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th><?php echo ('id'); ?></th><th>
-                            <?php echo ('asset_information_id'); ?></th>
-                <th><?php echo ('photo_name'); ?></th>
-                <th><?php echo ('photo_path'); ?></th>
-                <th><?php echo ('photo_file_type'); ?></th>
-<!--			<th><?php echo ('created_by'); ?></th>
-                <th><?php echo ('created'); ?></th>
-                <th><?php echo ('modified_by'); ?></th>
-                <th><?php echo ('modified'); ?></th>-->
+                <th><?php echo ('ลำดับ'); ?></th><th>
+                <th><?php echo ('ชื่อไฟล์'); ?></th>
+				<th><?php echo ('บันทึกโดย'); ?></th>
+                <th><?php echo ('วันที่'); ?></th>
 
-                <th class="actions"><?php echo __('Actions'); ?></th>
+                <th class="actions"><?php echo __('เอกสาร'); ?></th>
             </tr>
         </thead>
         <tbody>
 	<?php foreach ($photos as $photo): ?>
             <tr>
                 <td><?php echo h($photo['Photo']['id']); ?>&nbsp;</td>
-                <td><?php echo $this->Html->link($photo['AssetInformation']['id'], array('controller' => 'asset_informations', 'action' => 'view', $photo['AssetInformation']['id'])); ?></td>
                 <td><?php echo h($photo['Photo']['photo_name']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['photo_path']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['photo_file_type']); ?>&nbsp;</td>
-<!--		<td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['modified_by']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['modified']); ?>&nbsp;</td>-->
+				<td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
+				<td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
+				
+				
 
                 <td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $photo['Photo']['id'])); ?>

@@ -25,10 +25,10 @@ class FileMapsController extends AppController {
 	 */
 	public function index($assetInformationID=null) {
 		$this->set('assetID',$assetInformationID);
-		$this->layout="carousel";
 		$this->FileMap->recursive = 0;
 		$this->set('fileMaps', $this->FileMap->find('all', array('conditions' => array('FileMap.asset_information_id' => $assetInformationID))));
 //		$this->set('fileMaps', $this->Paginator->paginate());
+//		pr($this->Paginator->paginate());
 		
 	}
 
@@ -81,11 +81,11 @@ class FileMapsController extends AppController {
                     $this->saveUploadFile($photo, 'img/filemap', $photo['FileMap']['file_map_name']);
                     $photo['FileMap']['id'] = $this->FileMap->id;
                     $this->FileMap->save($photo);
-                    
+                    $this->Session->setFlash(__('The photo has been saved'), 'default', array('class' => 'alert alert-success'));
                     return $this->redirect(array('action' => 'index'.'/'.$assetInformationID));
                 } else {
                     
-                    $this->Session->setFlash(__('The photo could not be saved. Please, try again.'));
+                    $this->Session->setFlash(__('The photo could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                     
                 }
             }
@@ -129,16 +129,22 @@ class FileMapsController extends AppController {
 	 */
 	public function delete($id = null) {
 		$this->FileMap->id = $id;
+		$this->set('id',$id);
+		$Re = $this->FileMap->find('first',array('conditions' => array('FileMap.id'=>$id)));
+		
+	
 		if (!$this->FileMap->exists()) {
 			throw new NotFoundException(__('Invalid file map'));
 		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->FileMap->delete()) {
-			$this->Session->setFlash(__('The file map has been deleted.'));
+			$this->Session->setFlash(__('The file map has been deleted.'), 'default', array('class' => 'alert alert-success'));
+			return $this->redirect(array('action' => 'index'.'/'.$Re['FileMap']['asset_information_id']));
+			
 		} else {
-			$this->Session->setFlash(__('The file map could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The file map could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('action' => 'index'.'/'.$Re['FileMap']['asset_information_id']));
 	}
     public function isUploadedFile($field) {
         $photo = array(

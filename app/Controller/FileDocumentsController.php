@@ -7,12 +7,9 @@ class FileDocumentsController extends AppController {
     public $components = array('Paginator', 'Session');
 
     public function index($assetInformationId = null) {
-        
-        $this->layout = "carousel";
         $this->set('assetID', $assetInformationId);
         $this->FileDocument->recursive = 0;
         $this->set('fileDocuments',$this->FileDocument->find('all',array('conditions'=>array('FileDocument.asset_information_id'=>$assetInformationId))));
-        //$this->set('fileDocuments', $this->Paginator->paginate());
     }
 
     public function view($id = null) {
@@ -30,7 +27,8 @@ class FileDocumentsController extends AppController {
         if ($this->request->is('post')) {
             
             $document = $this->request->data['FileDocument']['document'];
-
+//			pr($document);
+//			die();
             if ($this->isUploadedFile($document)) {
 
                 $doc = pathinfo($document['name'], PATHINFO_EXTENSION);
@@ -48,10 +46,10 @@ class FileDocumentsController extends AppController {
                     $document['file_doc_name'] = 'filedocumentzzz_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
                     $this->saveUploadFile($document, 'files/filedocument', $document['file_doc_name']);
                     $this->FileDocument->save($document);
-
-                    return $this->redirect(array('action' => 'index'));
+					$this->Session->setFlash(__('The filedoument has been saved.'), 'default', array('class' => 'alert alert-success'));
+                    return $this->redirect(array('action' => 'index/'.$assetInformationId));
                 } else {
-                    $this->Session->setFlash(__('The filedoument could not be saved. Please, try again.'));
+                    $this->Session->setFlash(__('The filedoument could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                 }
             }
         }
@@ -81,7 +79,8 @@ class FileDocumentsController extends AppController {
 
     public function delete($id = null) {
         $this->FileDocument->id = $id;
-        if (!$this->FileDocument->exists()) {
+		$Re = $this->FileDocument->find('first',array('conditions' => array('FileDocument.id'=>$id)));
+	    if (!$this->FileDocument->exists()) {
             throw new NotFoundException(__('Invalid file document'));
         }
         $this->request->allowMethod('post', 'delete');
@@ -90,7 +89,7 @@ class FileDocumentsController extends AppController {
         } else {
             $this->Session->setFlash(__('The file document could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('action' => 'index/'.$Re['FileDocument']['asset_information_id']));
     }
 
     public function isUploadedFile($field) {
