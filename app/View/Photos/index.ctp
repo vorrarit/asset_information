@@ -64,31 +64,23 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th><?php echo ('id'); ?></th><th>
-                            <?php echo ('asset_information_id'); ?></th>
-                <th><?php echo ('photo_name'); ?></th>
-                <th><?php echo ('photo_path'); ?></th>
-                <th><?php echo ('photo_file_type'); ?></th>
-<!--			<th><?php echo ('created_by'); ?></th>
-                <th><?php echo ('created'); ?></th>
-                <th><?php echo ('modified_by'); ?></th>
-                <th><?php echo ('modified'); ?></th>-->
+                <th><?php echo ('ลำดับ'); ?></th><th>
+                <th><?php echo ('ชื่อไฟล์'); ?></th>
+				<th><?php echo ('บันทึกโดย'); ?></th>
+                <th><?php echo ('วันที่'); ?></th>
 
-                <th class="actions"><?php echo __('Actions'); ?></th>
+                <th class="actions"><?php echo __('เอกสาร'); ?></th>
             </tr>
         </thead>
         <tbody>
 	<?php foreach ($photos as $photo): ?>
             <tr>
                 <td><?php echo h($photo['Photo']['id']); ?>&nbsp;</td>
-                <td><?php echo $this->Html->link($photo['AssetInformation']['id'], array('controller' => 'asset_informations', 'action' => 'view', $photo['AssetInformation']['id'])); ?></td>
                 <td><?php echo h($photo['Photo']['photo_name']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['photo_path']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['photo_file_type']); ?>&nbsp;</td>
-<!--		<td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['modified_by']); ?>&nbsp;</td>
-                <td><?php echo h($photo['Photo']['modified']); ?>&nbsp;</td>-->
+				<td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
+				<td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
+				
+				
 
                 <td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $photo['Photo']['id'])); ?>
