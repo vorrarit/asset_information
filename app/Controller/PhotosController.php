@@ -25,7 +25,6 @@ class PhotosController extends AppController {
      */
     public function index($assetInformationId = null) {
         $this->set('assetID',$assetInformationId);
-        $this->layout="carousel";
         $this->Photo->recursive = 0;
         $this->set('photos', $this->Photo->find('all', array('conditions' => array('Photo.asset_information_id' => $assetInformationId))));
 //       $this->set('photos', $this->Paginator->paginate());
@@ -86,11 +85,11 @@ class PhotosController extends AppController {
                     //debug($currentUser);  die();
                     
                     $this->Photo->save($photo);
-                    
-                    return $this->redirect(array('action' => 'index'));
+                    $this->Session->setFlash(__('The Photo has been saved.'), 'default', array('class' => 'alert alert-success'));
+                    return $this->redirect(array('action' => 'index'.'/'.$assetInformationId));
                 } else {
                     
-                    $this->Session->setFlash(__('The photo could not be saved. Please, try again.'));
+                    $this->Session->setFlash(__('The photo could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                     
                 }
             }
@@ -121,16 +120,17 @@ class PhotosController extends AppController {
 
     public function delete($id = null) {
         $this->Photo->id = $id;
-        if (!$this->Photo->exists()) {
-            throw new NotFoundException(__('Invalid photo'));
-        }
+		$Re = $this->Photo->find('first',array('conditions'=>array('Photo.id'=>$id))) ;
+//        if (!$this->Photo->exists()) {
+//            throw new NotFoundException(__('Invalid photo'));
+//        }
         $this->request->allowMethod('post', 'delete');
         if ($this->Photo->delete()) {
             $this->Session->setFlash(__('The photo has been deleted.'));
         } else {
             $this->Session->setFlash(__('The photo could not be deleted. Please, try again.'));
         }
-        return $this->redirect(array('action' => 'index'));
+        return $this->redirect(array('action' => 'index/'.$Re['Photo']['asset_information_id']));
     }
 
     public function isUploadedFile($field) {

@@ -8,9 +8,9 @@
 
     <ul class="nav nav-tabs">
         <li role="presentation" onclick="added()"><a href="/AssetInformations/edit/<?php echo $id; ?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
-        <li role="presentation"  onclick="added()"><a href="../../FileDocuments/add/<?php echo $id; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
-        <li role="presentation" onclick="added()"><a href="../../Photos/add/<?php echo $id; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
-        <li role="presentation" class="active" onclick="added()"><a href="../FileMaps/add/<?php echo $id; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
+        <li role="presentation"  onclick="added()"><a href="../../FileDocuments/index/<?php echo $id; ?>">เพิ่มสำเนาโฉนดที่ดิน</a></li>
+        <li role="presentation" onclick="added()"><a href="../../Photos/index/<?php echo $id; ?>">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+        <li role="presentation" class="active" onclick="added()"><a href="#"<?php echo $id; ?>">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</a></li>
     </ul>
 </div>
 	<div class="fileMaps form">

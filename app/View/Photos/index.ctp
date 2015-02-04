@@ -4,7 +4,7 @@
 	<ol class="breadcrumb">
 		<li><a href="index">จัดการทรัพย์สิน</a></li>
                 <li><a href="/AssetInformations/edit/<?php echo $assetID;?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
-		<li class="active">เพิ่มข้อมูลทรัพย์สิน</li>
+		<li class="active">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</li>
 	</ol>
 </div>
 
@@ -58,9 +58,9 @@
             </div>
         </div>
     </div>
-    <div align = "right" >
-        <?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>',array('onclick'=>"window.location.href='/FileMaps/add/$assetID '",'type'=>'button','escape'=>false, 'title'=>__('เพิ่มข้อมูล'), 'class'=>'btn btn-default')); ?>
-    </div>
+    <div class="btn-group pull-right" role="group" aria-label="...">
+			<?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>', array('onclick' => "window.location.href='/Photos/add/$assetID '", 'type' => 'button', 'escape' => false, 'title' => __('เพิ่มข้อมูล'), 'class' => 'btn btn-default')); ?> 
+		</div>
     <table class="table table-hover">
         <thead>
             <tr>

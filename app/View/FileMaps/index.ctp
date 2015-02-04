@@ -1,7 +1,7 @@
 <div class="row">
 	<br>
 	<ol class="breadcrumb">
-		<li><a href="../../AssetInformations">จัดการทรัพย์สิน</a></li>
+		<li><a href="/AssetInformations">จัดการทรัพย์สิน</a></li>
 		<li class="active"><a href="/AssetInformations/edit/<?php echo $assetID; ?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
 		<li class="active">เพิ่มเอกสารการใช้ประโยชน์พื้นที่</li>
 	</ol>
@@ -18,7 +18,7 @@
 		</ul>
 	</div>
 	<div class="wrapper">
-		<div class="container gallery ">
+<!--		<div class="container gallery ">
 			<ul class="thumbnails ">
 				<?php foreach ($fileMaps as $fileMap) { ?>
 					<?php if ($fileMap['FileMap']['asset_information_id'] == $assetID) { ?>
@@ -29,12 +29,12 @@
 
 				<?php } ?>
 			</ul>
-<!--			end thumbnails  
+			end thumbnails  
 
-			 /#page-wrapper  -->
+			 /#page-wrapper  
 
-		</div>
-<!--		<div class="connected-carousels">
+		</div>-->
+		<div class="connected-carousels">
 			<div class="stage">
 				<div class="carousel carousel-stage">
 					<ul>
@@ -51,9 +51,9 @@
 				</div>
 				<a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
 				<a href="#" class="next next-stage"><span>&rsaquo;</span></a>
-			</div>-->
+			</div>
 
-<!--			<div class="navigation">
+			<div class="navigation">
 				<a href="#" class="prev prev-navigation">&lsaquo;</a>
 				<a href="#" class="next next-navigation">&rsaquo;</a>
 				<div class="carousel carousel-navigation">
@@ -69,7 +69,7 @@
 						<?php } ?>
 					</ul>
 				</div>
-			</div>-->
+			</div>
 		</div>
 		<div class="btn-group pull-right" role="group" aria-label="...">
 			<?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>', array('onclick' => "window.location.href='/FileMaps/add/$assetID '", 'type' => 'button', 'escape' => false, 'title' => __('เพิ่มข้อมูล'), 'class' => 'btn btn-default')); ?> 
