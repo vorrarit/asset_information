@@ -13,10 +13,15 @@
     </ul>
     </div>
 </div>
+<div class="col-md-12">
+    <h3 class="page-header">รายละเอียดทรัพย์สิน</h3>
+</div>
 <br>
 
 <div class="assetInformations form-horizontal">
 <?php echo $this->Form->create('AssetInformation'); ?>
+    <div class="panel panel-default">
+        <div class="panel panel-body" style="box-shadow:none; padding-bottom: 0px;" >
     <fieldset>
         
         <div class="row">
@@ -312,9 +317,12 @@
         </div>
         
     </fieldset>
+        
      <div class="row">
         <div class="col-lg-2"></div>
         <?php echo $this->Form->button(__('กลับ'),array('onclick'=>"window.location.href='/AssetInformations/index'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>
      </div>
      <?php echo $this->Form->end(); ?>
+</div>
+</div>
 </div>

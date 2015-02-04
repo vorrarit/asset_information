@@ -1,9 +1,8 @@
 <div class="row">
     <div class="col-lg-12">
-        <h5 class="page-header">จัดการทรัพย์สิน &gt; ข้อมูลทรัพย์สิน &gt; แก้ไขรายละเอียดทรัพย์สิน</h5>
+        <h5 class="page-header">จัดการทรัพย์สิน &gt; ข้อมูลทรัพย์สิน &gt; แก้ไขข้อมูลทรัพย์สิน</h5>
     </div>
 </div>
-
 <div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-tabs">
@@ -14,9 +13,14 @@
         </ul>
     </div>
 </div>
+<div class="col-md-12">
+        <h3 class="page-header">แก้ไขข้อมูลทรัพย์สิน</h3>
+    </div>
 <br>
 <div class="assetInformations form-horizontal">
 <?php echo $this->Form->create('AssetInformation'); ?>
+    <div class="panel panel-default">
+        <div class="panel panel-body" style="box-shadow:none; padding-bottom: 0px;" >
     <fieldset>
         
         <div class="row">
@@ -262,6 +266,8 @@
      </div>
      <?php echo $this->Form->end(); ?>
      <?php echo $this->fetch('postLink'); ?>
+        </div>
+    </div>
 </div>
 
 <style type="text/css">

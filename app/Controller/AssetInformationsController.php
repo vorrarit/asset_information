@@ -225,8 +225,8 @@ class AssetInformationsController extends AppController {
         if (!empty($this->request->data)) {
             $data = $this->request->data;
             
-            if($data['AssetInformation']['checkbox'] == 0){
-            if ($data['AssetInformation']['report_type'] == 0) {
+            if($data['AssetInformation']['search_all'] == 0){
+            if ($data['AssetInformation']['report_type'] == 'general') {
                 //----------------general-------------------
                 $dataReport = array($data['AssetInformation']['asset_info_name'],
                                     $data['AssetInformation']['asset_info_title_deed_no'],
@@ -251,7 +251,7 @@ class AssetInformationsController extends AppController {
                 $this->redirect(array('action' => 'report_general/'));
             } 
             
-            else if ($data['AssetInformation']['report_type'] == 1) {
+            else if ($data['AssetInformation']['report_type'] == "detail") {
                 //----------------manager-------------------
                  $dataReport = array($data['AssetInformation']['asset_info_name'],
                                     $data['AssetInformation']['asset_info_title_deed_no'],
@@ -269,7 +269,7 @@ class AssetInformationsController extends AppController {
                  $this->redirect(array('action' => 'report_manager/' ));
             }
             }
-            else if($data['AssetInformation']['checkbox'] == 1) {
+            else if($data['AssetInformation']['search_all'] == 1) {
             
             $this->set('assetInformations', $this->Paginator->paginate('AssetInformation'));
         }
