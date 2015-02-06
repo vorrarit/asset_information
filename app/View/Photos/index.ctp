@@ -1,11 +1,7 @@
-
 <div class="row">
-	<br>
-	<ol class="breadcrumb">
-		<li><a href="index">จัดการทรัพย์สิน</a></li>
-                <li><a href="/AssetInformations/edit/<?php echo $assetID;?>">แก้ไขข้อมูลทรัพย์สิน</a></li>
-		<li class="active">เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</li>
-	</ol>
+    <div class="col-lg-12">
+        <h5 class="page-header">จัดการทรัพย์สิน &gt; ข้อมูลทรัพย์สิน &gt; แก้ไขข้อมูลทรัพย์สิน &gt; เพิ่มภาพถ่ายพื้นที่และบริเวณรอบข้าง</h5>
+    </div>
 </div>
 
 <div class="products form row">
@@ -21,10 +17,10 @@
 <div class="photos index">
     <div class="wrapper">
 
+        <?php if(!empty($photos)) { ?>
         <div class="connected-carousels">
             <div class="stage">
                 <div class="carousel carousel-stage">
-
                     <ul>
 			<?php foreach ($photos as $photo){ ?>
 			<?php if($photo['Photo']['asset_information_id']==$assetID){?>
@@ -58,9 +54,19 @@
             </div>
         </div>
     </div>
+    
+    <?php } else{ ?>
+        <br><br>
+        <center>
+            <H3>ไม่พบภาพถ่ายพื้นที่และบริเวณรอบข้าง</H3>
+        </center>
+    <?php } ?>
+    
     <div class="btn-group pull-right" role="group" aria-label="...">
 			<?php echo $this->Form->button('<span class="glyphicon glyphicon-plus"> เพิ่มข้อมูล</span>', array('onclick' => "window.location.href='/Photos/add/$assetID '", 'type' => 'button', 'escape' => false, 'title' => __('เพิ่มข้อมูล'), 'class' => 'btn btn-default')); ?> 
 		</div>
+        
+        <?php if(!empty($photos)){?>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -95,7 +101,7 @@
 <?php endforeach; ?>
         </tbody>
     </table>
-  
+        <?php } ?>
     </div>
 </div>
 <!--<div class="actions">

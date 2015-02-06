@@ -13,13 +13,12 @@ class FileDocumentsController extends AppController {
     }
 
     public function view($id = null) {
-        if (!$this->FileDocument->exists($id)) {
-            throw new NotFoundException(__('Invalid file document'));
-        }
-        $options = array('conditions' => array('FileDocument.' . $this->FileDocument->primaryKey => $id));
-        $this->set('fileDocument', $this->FileDocument->find('first', $options));
+        $this->set('assetID', $assetInformationId);
+        $this->FileDocument->recursive = 0;
+        $this->set('fileDocuments',$this->FileDocument->find('all',array('conditions'=>array('FileDocument.asset_information_id'=>$assetInformationId))));
+    
     }
-
+    
     public function add($assetInformationId = null) {
         
             $this->set('assetID', $assetInformationId);
@@ -111,12 +110,24 @@ class FileDocumentsController extends AppController {
 
         return false;
     }
+    public function isUploadedFileDocument($field) {
+        $map = array(
+            'imgDoc/pdf' => '.pdf',
+            'imgDoc/jpeg' => '.jpg',
+        );
+        if ((isset($field['error']) && $field['error'] == 0) ||
+                (!empty($field['tmp_name']) && $field['tmp_name'] != 'none')
+        ) {
+//            if (array_key_exists($field['type'], $map)) {
+            return is_uploaded_file($field['tmp_name']);
+//            }
+        }
+        return false;
+    }
 
     public function saveUploadFile($field, $path, $fileName) {
-
         if (isset($field['error']) && $field['error'] == 0) {
             move_uploaded_file($field['tmp_name'], WWW_ROOT . $path . '/' . $fileName);
-
             return $path . '/' . $fileName;
         }
 

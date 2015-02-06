@@ -23,13 +23,6 @@
                         'onchange' => 'check_search()'));
                     ?>
                 </div>
-                <div class="col-lg-2">
-                    <?php
-                    echo $this->Form->checkbox('search_all', array(
-                        'label' => FALSE));
-                    ?>
-                    ค้นหาทั้งหมด
-                </div>
             </div>
 
             <div class="row">

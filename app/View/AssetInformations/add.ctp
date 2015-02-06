@@ -3,11 +3,9 @@
         <h5 class="page-header">จัดการทรัพย์สิน &gt; ข้อมูลทรัพย์สิน &gt; เพิ่มข้อมูลทรัพย์สิน</h5>
     </div>
 </div>
-    <div class="col-md-12">
-        <h3 class="page-header" style="margin-top: 20px;">เพิ่มข้อมูลทรัพย์สิน</h3>
-    </div>
+    
 
-<!--<div class="products form row">
+<div class="products form row">
     <div class="col-lg-12">
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a>เพิ่มข้อมูลทรัพย์สิน</a></li>
@@ -18,7 +16,12 @@
     </div>
 </div>
 <br>
-<script type="text/javascript">function added(){alert('กรุณาบันทึกข้อมูลทรัพย์สินก่อนทำการเพิ่มเอกสารอื่น ๆ');}</script>-->
+    
+<div class="col-md-12">
+    <h3 class="page-header" style="margin-top: 20px;">เพิ่มข้อมูลทรัพย์สิน</h3>
+</div>
+
+<script type="text/javascript">function added(){alert('กรุณาบันทึกข้อมูลทรัพย์สินก่อนทำการเพิ่มเอกสารอื่น ๆ');}</script>
 
 <div class="assetInformations form-horizontal">
 <?php echo $this->Form->create('AssetInformation'); ?>
@@ -265,7 +268,7 @@
     </fieldset>
     <div class="col-lg-2"></div>
     
-        <?php echo $this->Form->button(__('บันทึก'),array('type'=>'submit','class'=>'btn btn-primary btn-form')); ?>
+        <?php echo $this->Form->button(__('บันทึก'),array('type'=>'submit','class'=>'btn btn-primary btn-form','style'=>'margin-left: -10px;')); ?>
         <?php echo $this->Form->button(__('ยกเลิก'),array('onclick'=>"window.location.href='/AssetInformations/index'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>    
         <?php echo $this->Form->end(); ?>
     </div>

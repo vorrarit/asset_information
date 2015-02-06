@@ -23,13 +23,6 @@
                         'onchange' => 'check_search()'));
                     ?>
                 </div>
-                <div class="col-lg-2">
-                    <?php
-                    echo $this->Form->checkbox('search_all', array(
-                        'label' => FALSE));
-                    ?>
-                    ค้นหาทั้งหมด
-                </div>
             </div>
 
             <div class="row">
@@ -293,8 +286,8 @@
                     <td class="actions">
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-pencil"></span>', array('action' => 'edit', $assetInformation['AssetInformation']['id']), array('title' => __('Edit'), 'escape' => false)); ?>
                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $assetInformation['AssetInformation']['id']), array('title' => __('View'), 'escape' => false)); ?>
-                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $assetInformation['AssetInformation']['id']), array('title' => __('Delete'), 'escape' => false, __('Are you sure you want to delete # %s?', $assetInformation['AssetInformation']['id']))); ?>
-
+                        <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $assetInformation['AssetInformation']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $assetInformation['AssetInformation']['id'])); ?>
+                        
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -306,14 +299,16 @@
     echo $this->Paginator->counter(array(
         'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
     ));
-    ?>	</p>
-<div class="paging">
+    ?>	
+</p>
+<div class="pagination">
     <?php
-    echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-    echo $this->Paginator->numbers(array('separator' => ''));
-    echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+    
+    echo $this->Paginator->prev('< ' . __('previous'), array('tag' => 'li'), null, array('tag' => 'li', 'disabledTag' => 'a', 'class' => 'prev disabled'));
+    echo $this->Paginator->numbers(array('tag'=>'li', 'separator' => '', 'currentTag'=>'a', 'currentClass'=>'active'));
+    echo $this->Paginator->next(__('next') . ' >', array('tag' => 'li'), null, array('tag' => 'li', 'disabledTag' => 'a', 'class' => 'next disabled'));
+
     ?>
-</div>
 </div>
 
 <style type="text/css">
