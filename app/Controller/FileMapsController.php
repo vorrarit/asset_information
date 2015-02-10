@@ -11,141 +11,132 @@ App::uses('AppController', 'Controller');
  */
 class FileMapsController extends AppController {
 
-	/**
-	 * Components
-	 *
-	 * @var array
-	 */
-	public $components = array('Paginator', 'Session');
+    /**
+     * Components
+     *
+     * @var array
+     */
+    public $components = array('Paginator', 'Session');
 
-	/**
-	 * index method
-	 *
-	 * @return void
-	 */
-	public function index($assetInformationID=null) {
-		$this->set('assetID',$assetInformationID);
-		$this->FileMap->recursive = 0;
-		$this->set('fileMaps', $this->FileMap->find('all', array('conditions' => array('FileMap.asset_information_id' => $assetInformationID))));
+    /**
+     * index method
+     *
+     * @return void
+     */
+    public function index($assetInformationID = null) {
+        $this->set('assetID', $assetInformationID);
+        $this->FileMap->recursive = 0;
+        $this->set('fileMaps', $this->FileMap->find('all', array('conditions' => array('FileMap.asset_information_id' => $assetInformationID))));
 //		$this->set('fileMaps', $this->Paginator->paginate());
 //		pr($this->Paginator->paginate());
-		
-	}
+    }
 
-	/**
-	 * view method
-	 *
-	 * @throws NotFoundException
-	 * @param string $id
-	 * @return void
-	 */
-	public function view($id = null) {
-		if (!$this->FileMap->exists($id)) {
-			throw new NotFoundException(__('Invalid file map'));
-		}
-		$options = array('conditions' => array('FileMap.' . $this->FileMap->primaryKey => $id));
-		$this->set('fileMap', $this->FileMap->find('first', $options));
-	}
+    /**
+     * view method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function view($assetInformationID = null) {
+         $this->set('assetID', $assetInformationID);
+        $this->FileMap->recursive = 0;
+        $this->set('fileMaps', $this->FileMap->find('all', array('conditions' => array('FileMap.asset_information_id' => $assetInformationID))));
+    }
 
-	/**
-	 * add method
-	 *
-	 * @return void
-	 */
-	public function add($assetInformationID=null) {
-		$id = $assetInformationID;
-				$this->set('id',$assetInformationID);
-		if(!empty($this->request->data)){
-		
-			 $photo = $this->request->data['fileMap']['filemap'];
-				 //$photoId = $this->request->data['Photo']['id'];
+    /**
+     * add method
+     *
+     * @return void
+     */
+    public function add($assetInformationID = null) {
+        $id = $assetInformationID;
+        $this->set('id', $assetInformationID);
+        if (!empty($this->request->data)) {
+
+            $photo = $this->request->data['fileMap']['filemap'];
+            //$photoId = $this->request->data['Photo']['id'];
 //				 debug($this->request->data);die();
             if ($this->isUploadedFile($photo)) {
-				
+
                 $ext = pathinfo($photo['name'], PATHINFO_EXTENSION);
                 $photo['FileMap']['file_map_path'] = '/img/photo';
                 $photo['FileMap']['file_map_file_type'] = $photo['type'];
-				$photo['FileMap']['asset_information_id'] = $id;
-				$currentUser = $this->Session->read('Auth.User');
-				$photo['FileMap']['created_by'] = $currentUser['name'];
-				
-            
-//              pr($assetInformationID);
-//		pr($this->request->data);
-//		die();	
+                $photo['FileMap']['asset_information_id'] = $id;
+                $currentUser = $this->Session->read('Auth.User');
+                $photo['FileMap']['created_by'] = $currentUser['name'];
                 $this->FileMap->create();
-				
-			    if ($this->FileMap->save($photo)) {
-				
+
+                if ($this->FileMap->save($photo)) {
+
                     $photo['FileMap']['file_map_name'] = 'photo_' . $assetInformationID . '_' . $this->FileMap->id . '.' . $ext;
                     $this->saveUploadFile($photo, 'img/filemap', $photo['FileMap']['file_map_name']);
                     $photo['FileMap']['id'] = $this->FileMap->id;
                     $this->FileMap->save($photo);
                     $this->Session->setFlash(__('The photo has been saved'), 'default', array('class' => 'alert alert-success'));
-                    return $this->redirect(array('action' => 'index'.'/'.$assetInformationID));
+                    return $this->redirect(array('action' => 'index' . '/' . $assetInformationID));
                 } else {
-                    
+
                     $this->Session->setFlash(__('The photo could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
-                    
                 }
             }
-		}
-		$assetInformations = $this->FileMap->AssetInformation->find('list');
-		$this->set(compact('assetInformations'));
-	}
+        }
+        $assetInformations = $this->FileMap->AssetInformation->find('list');
+        $this->set(compact('assetInformations'));
+    }
 
-	/**
-	 * edit method
-	 *
-	 * @throws NotFoundException
-	 * @param string $id
-	 * @return void
-	 */
-	public function edit($id = null) {
-		if (!$this->FileMap->exists($id)) {
-			throw new NotFoundException(__('Invalid file map'));
-		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->FileMap->save($this->request->data)) {
-				$this->Session->setFlash(__('The file map has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The file map could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('FileMap.' . $this->FileMap->primaryKey => $id));
-			$this->request->data = $this->FileMap->find('first', $options);
-		}
-		$assetInformations = $this->FileMap->AssetInformation->find('list');
-		$this->set(compact('assetInformations'));
-	}
+    /**
+     * edit method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function edit($id = null) {
+        if (!$this->FileMap->exists($id)) {
+            throw new NotFoundException(__('Invalid file map'));
+        }
+        if ($this->request->is(array('post', 'put'))) {
+            if ($this->FileMap->save($this->request->data)) {
+                $this->Session->setFlash(__('The file map has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The file map could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('FileMap.' . $this->FileMap->primaryKey => $id));
+            $this->request->data = $this->FileMap->find('first', $options);
+        }
+        $assetInformations = $this->FileMap->AssetInformation->find('list');
+        $this->set(compact('assetInformations'));
+    }
 
-	/**
-	 * delete method
-	 *
-	 * @throws NotFoundException
-	 * @param string $id
-	 * @return void
-	 */
-	public function delete($id = null) {
-		$this->FileMap->id = $id;
-		$this->set('id',$id);
-		$Re = $this->FileMap->find('first',array('conditions' => array('FileMap.id'=>$id)));
-		
-	
-		if (!$this->FileMap->exists()) {
-			throw new NotFoundException(__('Invalid file map'));
-		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->FileMap->delete()) {
-			$this->Session->setFlash(__('The file map has been deleted.'), 'default', array('class' => 'alert alert-success'));
-			return $this->redirect(array('action' => 'index'.'/'.$Re['FileMap']['asset_information_id']));
-			
-		} else {
-			$this->Session->setFlash(__('The file map could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
-		}
-		return $this->redirect(array('action' => 'index'.'/'.$Re['FileMap']['asset_information_id']));
-	}
+    /**
+     * delete method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function delete($id = null) {
+        $this->FileMap->id = $id;
+        $this->set('id', $id);
+        $Re = $this->FileMap->find('first', array('conditions' => array('FileMap.id' => $id)));
+
+
+        if (!$this->FileMap->exists()) {
+            throw new NotFoundException(__('Invalid file map'));
+        }
+        $this->request->allowMethod('post', 'delete');
+        if ($this->FileMap->delete()) {
+            $this->Session->setFlash(__('The file map has been deleted.'), 'default', array('class' => 'alert alert-success'));
+            return $this->redirect(array('action' => 'index' . '/' . $Re['FileMap']['asset_information_id']));
+        } else {
+            $this->Session->setFlash(__('The file map could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+        }
+        return $this->redirect(array('action' => 'index' . '/' . $Re['FileMap']['asset_information_id']));
+    }
+
     public function isUploadedFile($field) {
         $photo = array(
             'image/gif' => '.gif',
@@ -170,4 +161,5 @@ class FileMapsController extends AppController {
 
         return '';
     }
+
 }

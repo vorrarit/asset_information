@@ -23,7 +23,7 @@ class PhotosController extends AppController {
      *
      * @return void
      */
-    public function index($assetInformationId = null) {
+        public function index($assetInformationId = null) {
         $this->set('assetID',$assetInformationId);
         $this->Photo->recursive = 0;
         $this->set('photos', $this->Photo->find('all', array('conditions' => array('Photo.asset_information_id' => $assetInformationId))));
@@ -40,12 +40,10 @@ class PhotosController extends AppController {
      * @param string $id
      * @return void
      */
-    public function view($id = null) {
-        if (!$this->Photo->exists($id)) {
-            throw new NotFoundException(__('Invalid photo'));
-        }
-        $options = array('conditions' => array('Photo.' . $this->Photo->primaryKey => $id));
-        $this->set('photo', $this->Photo->find('first', $options));
+    public function view($assetInformationId = null) {
+        $this->set('assetID',$assetInformationId);
+        $this->Photo->recursive = 0;
+        $this->set('photos', $this->Photo->find('all', array('conditions' => array('Photo.asset_information_id' => $assetInformationId))));
     }
 
     /**

@@ -23,7 +23,7 @@ class AssetInformationsController extends AppController {
 					'conditions' => array(),
 					'order' => array('AssetInformation.id' => 'asc')
 			));
-			if ($data['AssetInformation']['search_all'] == 0) {
+			
 				if (!empty($data['AssetInformation']['asset_info_name'])) {
 					$settings['AssetInformation']['conditions']['lower(AssetInformation.asset_info_name) like'] = '%' . strtolower($data['AssetInformation']['asset_info_name']) . '%';
 				}
@@ -88,7 +88,7 @@ class AssetInformationsController extends AppController {
 			} else {
 				$this->set('assetInformations', $this->Paginator->paginate());
 			}
-		}
+		
 		$provinces = $this->Province->find('list', array('fields' => array('id', 'province_name')));
 		$districts = $this->District->find('list', array('fields' => array('id', 'district_name')));
 		$subDistricts = $this->SubDistrict->find('list', array('fields' => array('id', 'sub_district_name')));

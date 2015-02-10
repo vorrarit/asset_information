@@ -12,7 +12,7 @@ class FileDocumentsController extends AppController {
         $this->set('fileDocuments',$this->FileDocument->find('all',array('conditions'=>array('FileDocument.asset_information_id'=>$assetInformationId))));
     }
 
-    public function view($id = null) {
+    public function view($assetInformationId = null) {
         $this->set('assetID', $assetInformationId);
         $this->FileDocument->recursive = 0;
         $this->set('fileDocuments',$this->FileDocument->find('all',array('conditions'=>array('FileDocument.asset_information_id'=>$assetInformationId))));
@@ -45,7 +45,7 @@ class FileDocumentsController extends AppController {
                     $document['file_doc_name'] = 'filedocumentzzz_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
                     $this->saveUploadFile($document, 'files/filedocument', $document['file_doc_name']);
                     $this->FileDocument->save($document);
-					$this->Session->setFlash(__('The filedoument has been saved.'), 'default', array('class' => 'alert alert-success'));
+                    $this->Session->setFlash(__('The filedoument has been saved.'), 'default', array('class' => 'alert alert-success'));
                     return $this->redirect(array('action' => 'index/'.$assetInformationId));
                 } else {
                     $this->Session->setFlash(__('The filedoument could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));

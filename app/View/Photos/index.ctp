@@ -70,11 +70,10 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th><?php echo ('ลำดับ'); ?></th><th>
-                <th><?php echo ('ชื่อไฟล์'); ?></th>
-				<th><?php echo ('บันทึกโดย'); ?></th>
-                <th><?php echo ('วันที่'); ?></th>
-
+                <th><?php echo __('ลำดับ'); ?></th>
+                <th><?php echo __('ชื่อไฟล์'); ?></th>
+                <th><?php echo __('บันทึกโดย'); ?></th>
+                <th><?php echo __('วันที่'); ?></th>
                 <th class="actions"><?php echo __('เอกสาร'); ?></th>
             </tr>
         </thead>
@@ -89,13 +88,7 @@
 				
 
                 <td class="actions">
-			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $photo['Photo']['id'])); ?>
-			<?php //echo $this->Html->link(__('Edit'), array('action' => 'edit', $photo['Photo']['id'])); ?>
-			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $photo['Photo']['id']), array(), __('Are you sure you want to delete # %s?', $photo['Photo']['id'])); ?>
-                        <?php //echo $this->Html->link('<span class="glyphicon glyphicon-paperclip"></span>', array('action' => 'view', $photo['Photo']['id']), array('escape'=>false, 'title'=>__('View'))); ?>
-                        <?php // echo $this->Html->link('<span class="glyphicon glyphicon-pencil"></span>', array('action' => 'edit', $photo['Photo']['id']), array('escape'=>false, 'title'=>__('Edit'))); ?>
-			<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $photo['Photo']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $photo['Photo']['id'])); ?>
-
+                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $photo['Photo']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $photo['Photo']['id'])); ?>
                 </td>
             </tr>
 <?php endforeach; ?>

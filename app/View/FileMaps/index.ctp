@@ -15,16 +15,6 @@
         </ul>
     </div>
     <div class="wrapper">
-
-        <?php foreach ($fileMaps as $fileMap) { ?>
-            <?php if ($fileMap['FileMap']['asset_information_id'] == $assetID) { ?>
-
-                <li class="span3"> <a class="thumbnail" rel="lightbox[group]" href=""<?php echo "/img/filemap/" . $fileMap['FileMap']['file_map_name']; ?>""><img class="group1" src="<?php echo "/img/filemap/" . $fileMap['FileMap']['file_map_name']; ?>" title="Image Title" /></a> </li>
-
-            <?php } ?>
-
-        <?php } ?>
-
         <?php if (!empty($fileMaps)) { ?>
             <div class="connected-carousels">
                 <div class="stage">
@@ -96,8 +86,7 @@
 
 
                         <td class="actions">
-                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"> ลบข้อมูล</span>', array('action' => 'delete', $fileMap['FileMap']['id']), array('escape' => false, 'title' => __('Delete')), __('Are you sure you want to delete # %s?', $fileMap['FileMap']['id'])); ?>
-
+                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $fileMap['FileMap']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $fileMap['FileMap']['id'])); ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

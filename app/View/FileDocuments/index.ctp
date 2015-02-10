@@ -39,7 +39,7 @@
                     <ul>
                         <?php foreach ($fileDocuments as $fileDocument) { ?>	
                             <?php if ($fileDocument['FileDocument']['asset_information_id'] == $assetID) { ?>
-                                <li><img src="<?php echo "/files/filedocument/" . $fileDocument['FileDocument']['file_doc_name']; ?>" width="100" height="60" alt=""></li>
+                                <li><img src="<?php echo "/files/filedocument/" . $fileDocument['FileDocument']['file_doc_name']; ?>" width="50" height="50" alt=""></li>
                             <?php } ?>
                         <?php } ?>
                     </ul>
@@ -60,7 +60,7 @@
         
         <?php if(!empty($fileDocuments)){?>
         
-        <table class = " table table-hover">
+        <table class = "    table table-hover">
             <thead>
                 <tr>
                     <th><?php echo ('ลำดับ'); ?></th>
@@ -79,7 +79,7 @@
                         <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
 
                         <td class="actions">
-                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('controller' => 'FileDocuments', 'action' => 'delete', $fileDocument['FileDocument']['id']), array('escape' => false, 'title' => __('Delete')), __('Are you sure you want to delete # %s?', $fileDocument['FileDocument']['id'])); ?>	
+                          <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $fileDocument['FileDocument']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $fileDocument['FileDocument']['id'])); ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

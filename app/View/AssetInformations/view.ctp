@@ -7,9 +7,9 @@
     <div class="col-lg-12">
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a>รายละเอียด</a></li>
-        <li role="presentation"><a href="/FileDocuments/index/<?php echo $assetID ?>">สำเนาโฉนดที่ดิน</a></li>
-        <li role="presentation"><a href="/Photos/index/<?php echo $assetID  ?>">ภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
-        <li role="presentation"><a href="/FileMaps/index/<?php echo $assetID  ?>">เอกสารการใช้ประโยชน์พื้นที่</a></li>
+        <li role="presentation"><a href="/FileDocuments/view/<?php echo $assetID ?>">สำเนาโฉนดที่ดิน</a></li>
+        <li role="presentation"><a href="/Photos/view/<?php echo $assetID  ?>">ภาพถ่ายพื้นที่และบริเวณรอบข้าง</a></li>
+        <li role="presentation"><a href="/FileMaps/view/<?php echo $assetID  ?>">เอกสารการใช้ประโยชน์พื้นที่</a></li>
     </ul>
     </div>
 </div>

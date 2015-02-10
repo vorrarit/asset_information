@@ -33,7 +33,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <?php echo $this->Form->input('photo : ', array('name' => 'data[Photo][photo]', 'type' => 'file')); ?>
+                <?php echo $this->Form->input('Document : ', array('name' => 'data[Photo][photo]', 'type' => 'file')); ?>
             </div>
         </div>
         <?php echo 'Remark : File type (jpg,png,gif)'; ?>

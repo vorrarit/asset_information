@@ -175,7 +175,7 @@
                         ?>
                     </div>
                     <div class="col-lg-2">
-                        <label class="control-label right">การใช้ประยชน์ : </label>
+                        <label class="control-label right">การใช้ประโยชน์  : </label>
                     </div>
                     <div class="col-lg-2">
                         <?php

@@ -32,13 +32,21 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-    public $components = array('Session', 'Paginator', 'Auth' => array(
-            'loginRedirect' => '/AssetInformations/index',
-            'logoutRedirect' => '/Users/login',
-            'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish')),
-            'authorize' => array('Controller')));
-            
-	public $helpers = array('Form' => array('className' => 'Bs3Helpers.Bs3Form'));
+   public $components = array(
+		'Session',
+		'Paginator',
+		'Auth' => array(
+			'loginRedirect' => '/AssetInformations/index',
+			'logoutRedirect' => '/Users/login',
+			'authenticate' => array(
+				'Form' => array(
+					'passwordHasher' => 'Blowfish'
+				)
+			),
+			'authorize' => array('Controller')
+		)
+	);
+    public $helpers = array('Form' => array('className' => 'Bs3Helpers.Bs3Form'));
 
     public function isAuthorized($user) {
         return true;
