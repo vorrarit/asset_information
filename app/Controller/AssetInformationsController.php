@@ -110,10 +110,13 @@ class AssetInformationsController extends AppController {
         if ($this->request->is('post')) {
             $currentUser = $this->Session->read('Auth.User');
             $this->AssetInformation->create();
+            $count = $this->AssetInformation->find('count');
+            $id = $count+1;
+            $this->request->data['AssetInformation']['id'] = $id;
             $this->request->data['AssetInformation']['created_by'] = $currentUser['name'];
             if ($this->AssetInformation->save($this->request->data)) {
                 $this->Session->setFlash(__('บันทึกข้อมูลเสร็จแล้ว'), 'default', array('class' => 'alert alert-success'));
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(array('action' => '../FileDocuments/index/'.$id));
             } else {
                 $this->Session->setFlash(__('การบันทึกข้อมูลเกิดความผิดพลาด กรุณาลองใหม่อีกครั้ง'), 'default', array('class' => 'alert alert-danger'));
             }

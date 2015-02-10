@@ -28,11 +28,10 @@
             ?>
             <div class="row">
                 <div class="col-lg-12">
-                    <?php echo $this->Form->input('document : ', array('name' => 'data[FileDocument][document]', 'type' => 'file')); ?>
+                    <?php echo $this->Form->input('document : ', array('label' => False, 'name' => 'data[FileDocument][document]', 'type' => 'file', 'accept' => "image/x-png, image/gif, image/jpeg")); ?>
                 </div>
             </div>
         </fieldset>
         <?php echo $this->Form->button('Submit', array('class' => 'btn btn-primary btn-form')); ?>
         <?php echo $this->Form->end(); ?>
     </div>
-

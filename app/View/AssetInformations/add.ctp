@@ -278,7 +278,7 @@
 <style type="text/css">
 	#map-canvas {
 		width:568px;
-		height:480px;
+		height:430px;
 	}
 </style>
 
@@ -297,7 +297,7 @@
 				<form>
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="input-group">
+							<div class="input-group" style="margin-top:7px;">
 								<input type="text" id="txtGeoCoderSearch" class="form-control" placeholder="Search for location...">
 								<span class="input-group-btn">
 									<button class="btn btn-default" style="padding-bottom: 7px;" type="button" id="btnGeoCoderSearch">Go!</button>
@@ -309,7 +309,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-form" data-dismiss="modal">Close</button>
+                <button type="button" style="margin:-8px;" class="btn btn-default btn-form" data-dismiss="modal">Close</button>
             </div>
         </div>
         <!-- /.modal-content -->

@@ -31,7 +31,7 @@
             ?>
             <div class="row">
                 <div class="col-lg-12">
-                    <?php echo $this->Form->input('document : ', array('name' => 'data[fileMap][filemap]', 'type' => 'file')); ?>
+                    <?php echo $this->Form->input('document : ', array('label'=>False , 'name' => 'data[fileMap][filemap]', 'type' => 'file','accept'=>"image/x-png, image/gif, image/jpeg")); ?>
                 </div>
             </div>
             <?php echo 'Remark : File type (jpg,png,gif)'; ?>

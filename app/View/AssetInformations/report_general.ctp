@@ -58,10 +58,10 @@
                         <td><?php echo h($assetInformation['AssetInformation']['asset_info_square_wah']); ?>&nbsp;</td>
                         <td style="text-align: left;"><?php
                             echo
-                            $assetInformation['AssetInformation']['asset_info_north'] . '<br>' .
-                            $assetInformation['AssetInformation']['asset_info_south'] . '<br>' .
-                            $assetInformation['AssetInformation']['asset_info_east'] . '<br>' .
-                            $assetInformation['AssetInformation']['asset_info_west']
+                            'ทิศเหนือ: ' . $assetInformation['AssetInformation']['asset_info_north'] . '<br>' .
+                            'ทิศใต้: ' .$assetInformation['AssetInformation']['asset_info_south'] . '<br>' .
+                            'ทิศตะวันออก: ' .$assetInformation['AssetInformation']['asset_info_east'] . '<br>' .
+                            'ทิศตะวันตก: ' .$assetInformation['AssetInformation']['asset_info_west']
                             ;
                             ?></td>
 
