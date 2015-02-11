@@ -14,74 +14,74 @@
         </ul>
     </div>
     <div class="wrapper">
-        <?php if(!empty($fileDocuments)){?>
-        <div class="connected-carousels">
-            <div class="stage">
-                <div class="carousel carousel-stage">
-                    <ul>
-                        
-                        <?php foreach ($fileDocuments as $fileDocument) { ?>	
-                            <?php if ($fileDocument['FileDocument']['asset_information_id'] == $assetID) { ?>
-                                <li><img src="<?php echo "/files/filedocument/" . $fileDocument['FileDocument']['file_doc_name']; ?>" width="600" height="400" alt=""></li>
+        <?php if (!empty($fileDocuments)) { ?>
+            <div class="connected-carousels">
+                <div class="stage">
+                    <div class="carousel carousel-stage">
+                        <ul>
+
+                            <?php foreach ($fileDocuments as $fileDocument) { ?>	
+                                <?php if ($fileDocument['FileDocument']['asset_information_id'] == $assetID) { ?>
+                                    <li><img src="<?php echo "/files/filedocument/" . $fileDocument['FileDocument']['file_doc_name']; ?>" width="600" height="400" alt=""></li>
+                                <?php } ?>
                             <?php } ?>
-                        <?php } ?>
-                        
-                    </ul>
+
+                        </ul>
+                    </div>
+                    <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
                 </div>
-                <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
-                <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+
+                <div class="navigation">
+                    <a href="#" class="prev prev-navigation">&lsaquo;</a>
+                    <a href="#" class="next next-navigation">&rsaquo;</a>
+                    <div class="carousel carousel-navigation">
+                        <ul>
+                            <?php foreach ($fileDocuments as $fileDocument) { ?>	
+                                <?php if ($fileDocument['FileDocument']['asset_information_id'] == $assetID) { ?>
+                                    <li><img src="<?php echo "/files/filedocument/" . $fileDocument['FileDocument']['file_doc_name']; ?>" width="50" height="50" alt=""></li>
+                                <?php } ?>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="navigation">
-                <a href="#" class="prev prev-navigation">&lsaquo;</a>
-                <a href="#" class="next next-navigation">&rsaquo;</a>
-                <div class="carousel carousel-navigation">
-                    <ul>
-                        <?php foreach ($fileDocuments as $fileDocument) { ?>	
-                            <?php if ($fileDocument['FileDocument']['asset_information_id'] == $assetID) { ?>
-                                <li><img src="<?php echo "/files/filedocument/" . $fileDocument['FileDocument']['file_doc_name']; ?>" width="50" height="50" alt=""></li>
-                            <?php } ?>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <?php } else{ ?>
-        <br><br>
-        <center>
-            <H3>ไม่พบสำเนาโฉนดที่ดิน</H3>
-        </center>
+        <?php } else { ?>
+            <br><br>
+            <center>
+                <H3>ไม่พบสำเนาโฉนดที่ดิน</H3>
+            </center>
         <?php } ?>
         <br>        
-        <?php if(!empty($fileDocuments)){?>
-        
-        <table class = " table table-hover">
-            <thead>
-                <tr>
-                    <th><?php echo ('ลำดับ'); ?></th>
-                    <th><?php echo ('ชื่อไฟล์'); ?>&nbsp;</th>
-                    <th><?php echo ('วันที่'); ?>&nbsp;</th>
-                    <th><?php echo ('บันทึกโดย'); ?>&nbsp;</th>
-              
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($fileDocuments as $fileDocument): ?>
+        <?php if (!empty($fileDocuments)) { ?>
+
+            <table class = " table table-hover">
+                <thead>
                     <tr>
-                        <td><?php echo h($fileDocument['FileDocument']['id']); ?>&nbsp;</td>                  
-                        <td><?php echo h($fileDocument['FileDocument']['file_doc_name']); ?>&nbsp;</td>
-                        <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
-                        <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
+                        <th><?php echo ('ลำดับ'); ?></th>
+                        <th><?php echo ('ชื่อไฟล์'); ?>&nbsp;</th>
+                        <th><?php echo ('บันทึกโดย'); ?>&nbsp;</th>
+                        <th><?php echo ('วันที่'); ?>&nbsp;</th>
 
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($fileDocuments as $fileDocument): ?>
+                        <tr>
+                            <td><?php echo h($fileDocument['FileDocument']['id']); ?>&nbsp;</td>                  
+                            <td><?php echo h($fileDocument['FileDocument']['file_doc_name']); ?>&nbsp;</td>
+                            <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
+                            <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
 
         <?php } ?>
-        
-        
+
+
     </div>
 </div>
 </div>

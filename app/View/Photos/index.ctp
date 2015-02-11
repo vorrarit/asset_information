@@ -82,8 +82,8 @@
             <tr>
                 <td><?php echo h($photo['Photo']['id']); ?>&nbsp;</td>
                 <td><?php echo h($photo['Photo']['photo_name']); ?>&nbsp;</td>
-				<td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
-				<td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
+                <td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
+		<td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
 				
 				
 

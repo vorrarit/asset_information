@@ -65,8 +65,9 @@
                 <tr>
                     <th><?php echo ('ลำดับ'); ?></th>
                     <th><?php echo ('ชื่อไฟล์'); ?>&nbsp;</th>
-                    <th><?php echo ('วันที่'); ?>&nbsp;</th>
                     <th><?php echo ('บันทึกโดย'); ?>&nbsp;</th>
+                    <th><?php echo ('วันที่'); ?>&nbsp;</th>
+                   
                     <th class="actions"><?php echo __('เอกสาร'); ?>&nbsp;</th>
                 </tr>
             </thead>
@@ -75,8 +76,9 @@
                     <tr>
                         <td><?php echo h($fileDocument['FileDocument']['id']); ?>&nbsp;</td>                  
                         <td><?php echo h($fileDocument['FileDocument']['file_doc_name']); ?>&nbsp;</td>
-                        <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
                         <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
+                        <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
+                        
 
                         <td class="actions">
                           <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $fileDocument['FileDocument']['id']), array('escape'=>false, 'title'=>__('Delete')), __('Are you sure you want to delete # %s?', $fileDocument['FileDocument']['id'])); ?>

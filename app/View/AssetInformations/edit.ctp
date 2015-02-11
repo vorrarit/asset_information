@@ -273,7 +273,7 @@
 <style type="text/css">
 	#map-canvas {
 		width:568px;
-		height:480px;
+		height:430px;
 	}
 </style>
 
