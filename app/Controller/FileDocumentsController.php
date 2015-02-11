@@ -63,10 +63,10 @@ class FileDocumentsController extends AppController {
         }
         if ($this->request->is(array('post', 'put'))) {
             if ($this->FileDocument->save($this->request->data)) {
-                $this->Session->setFlash(__('The file document has been saved.'));
+                $this->Session->setFlash(__('The filedoument has been saved.'), 'default', array('class' => 'alert alert-success'));
                 return $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The file document could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The filedoument could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
             }
         } else {
             $options = array('conditions' => array('FileDocument.' . $this->FileDocument->primaryKey => $id));
@@ -84,9 +84,9 @@ class FileDocumentsController extends AppController {
         }
         $this->request->allowMethod('post', 'delete');
         if ($this->FileDocument->delete()) {
-            $this->Session->setFlash(__('The file document has been deleted.'));
+            $this->Session->setFlash(__('The filedoument has been deleted.'), 'default', array('class' => 'alert alert-success'));
         } else {
-            $this->Session->setFlash(__('The file document could not be deleted. Please, try again.'));
+            $this->Session->setFlash(__('The filedoument could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
         }
         return $this->redirect(array('action' => 'index/'.$Re['FileDocument']['asset_information_id']));
     }
