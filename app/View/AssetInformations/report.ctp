@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div id="embed_div"  hidden="true" class="check_search_type" >
+            <div id="embed_div" class="check_search_type" >
                 <div class="row">
                     <div class="col-lg-2">
                         <label class="control-label right">ทิศเหนือ : </label>
@@ -255,11 +255,11 @@
     function check_search() {
         var type = document.getElementById('AssetInformationReportType').value;
         if (type == 'detail') {
-            $('.check_search_type').show("fast");
+            $('.check_search_type').hide("fast");
             $('.actives').text('รายงานทรัพย์สิน(ผู้บริหาร)');
 
         } else {
-            $('.check_search_type').hide("fast");
+            $('.check_search_type').show("fast");
             $('.actives').text('รายงานทรัพย์สิน(ทั่วไป)');
         }
     }

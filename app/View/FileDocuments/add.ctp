@@ -31,7 +31,10 @@
                     <?php echo $this->Form->input('document : ', array('label' => False, 'name' => 'data[FileDocument][document]', 'type' => 'file', 'accept' => "image/x-png, image/gif, image/jpeg")); ?>
                 </div>
             </div>
+            <?php echo 'Remark : File type (pdf,jpg)'; ?>
+            
         </fieldset>
+        <br>
         <?php echo $this->Form->button('Submit', array('class' => 'btn btn-primary btn-form')); ?>
         <?php echo $this->Form->end(); ?>
     </div>
