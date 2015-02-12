@@ -61,7 +61,7 @@ body {
 					<ul class="dropdown-menu dropdown-user">
                                                <?php $currentUser = $this->Session->read('Auth.User');?>
 						<li><a href="/Users/view/<?php echo $currentUser['id']; ?>"><i class="fa fa-user fa-fw"></i> User Profile</a> </li>
-						<li><a href="Users/edit/<?php echo $currentUser['id']; ?>"><i class="fa fa-gear fa-fw"></i> Settings</a> </li>
+						<li><a href="/Users/edit/<?php echo $currentUser['id']; ?>"><i class="fa fa-gear fa-fw"></i> Settings</a> </li>
 						<li class="divider"></li>
 						<li><a href="/Users/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </li>
 					</ul>

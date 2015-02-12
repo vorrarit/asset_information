@@ -42,7 +42,7 @@ class FileDocumentsController extends AppController {
 
                 if ($this->FileDocument->save($document)) {
                     $document['id'] = $this->FileDocument->id;
-                    $document['file_doc_name'] = 'filedocumentzzz_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
+                    $document['file_doc_name'] = 'filedocument_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
                     $this->saveUploadFile($document, 'files/filedocument', $document['file_doc_name']);
                     $this->FileDocument->save($document);
                     $this->Session->setFlash(__('The filedoument has been saved.'), 'default', array('class' => 'alert alert-success'));

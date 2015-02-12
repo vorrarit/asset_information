@@ -16,7 +16,6 @@
                         echo $this->Form->input('password', array('label' => false, 'onkeypress'=>'validate(event)',"maxlength"=>"16    ", "placeholder" => "รหัสผ่าน"));
                         ?>
                         </fieldset> 
-
                         <?php echo $this->Form->button(__('เข้าสู่ระบบ'), array('type' => 'submit', 'class' => 'btn btn-lg btn-success btn-block')); ?>
                         <?php echo $this->Form->end(); ?>
                     </div>
