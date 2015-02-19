@@ -182,8 +182,7 @@
                         <?php
                         echo $this->Form->input('utilization_id', array(
                         'label' => FALSE,
-                        'empty' => 'กรุณาเลือก',
-                        'onchange' => 'district_Changed()'));
+                        'empty' => 'กรุณาเลือก'));
                         ?>
                 </div>
             </div>

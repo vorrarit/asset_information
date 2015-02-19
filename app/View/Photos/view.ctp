@@ -67,20 +67,22 @@
                 <tr>
                     <th><?php echo __('ลำดับ'); ?></th>
                     <th><?php echo __('ชื่อไฟล์'); ?></th>
-
-                    <th><?php echo __('บันทึกโดย'); ?></th>
                     <th><?php echo __('วันที่'); ?></th>  
+                    <th><?php echo __('บันทึกโดย'); ?></th>
+
 
                 </tr>
             </thead>
             <tbody>
+                <?php $index =0 ?>
                 <?php foreach ($photos as $photo): ?>
                     <tr>
-                        <td><?php echo h($photo['Photo']['id']); ?>&nbsp;</td>
+                        <?php $index++ ;?>
+                        <td><?php echo $index ?></td>
                         <td><?php echo h($photo['Photo']['photo_name']); ?>&nbsp;</td>
-
-                        <td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
                         <td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
+                        <td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>

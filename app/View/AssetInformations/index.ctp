@@ -266,9 +266,11 @@
                 <th class="actions" width="80"><?php echo __('เอกสาร'); ?></th></tr>
         </thead>
         <tbody>
+            <?php $i=0; ?>
             <?php foreach ($assetInformations as $assetInformation): ?>
                 <tr>
-                    <td><?php echo h($assetInformation['AssetInformation']['id']); ?>&nbsp;</td>
+                    <?php $i++ ?>
+                    <td><?php echo $i; ?>&nbsp;</td>
                     <td><?php echo h($assetInformation['AssetInformation']['asset_info_name']); ?>&nbsp;</td>
                     <td>
                         <?php echo h($assetInformation['SubDistrict']['sub_district_name']); ?>&nbsp;

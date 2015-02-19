@@ -28,6 +28,7 @@
           <label class="control-label right">ชื่อศาสนสมบัติ : </label>
         </div>
             <div class="col-lg-4">
+                <?php echo $this->Form->input('id',array('type'=>'hidden' , 'value'=>$id));?>
                 <?php echo $this->Form->input('asset_info_name',array('label'=> FALSE , 'required'=>true ,'maxlength'=>'50'));?>
             </div>
         </div>
@@ -196,7 +197,7 @@
                 <label class="control-label right">ราคาประเมิน: </label>
             </div>
             <div class="col-md-2">
-                <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=> FALSE));?>
+             <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=> FALSE , 'onKeyDown' => "if(this.value.length==9 && event.keyCode != 8 ) return false;", 'onblur'=>'precisionFix(this.value)'));?> 
             </div>
             <div class="col-md-2">
                 <label class="control-label left">บาทต่อตารางวา</label>
@@ -420,5 +421,5 @@ $('#btnGeoCoderSearch').click(function() {
 		}
 	});
 });
-
+function precisionFix(value){ var result=Math.round(value*100)/100; $("#AssetInformationAssetInfoCostEstimate").val(result); }
 </script>

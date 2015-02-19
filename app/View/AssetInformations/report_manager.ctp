@@ -58,7 +58,7 @@
     
     <?php echo $this->Form->button(__('บันทึกรายงาน'), array('type'=>'submit','class'=>'btn btn-primary btn-form')); ?>&nbsp;&nbsp;
     <?php echo $this->Form->button(__('พิมพ์รายงาน'),array('type'=>'button', 'onclick'=>'window.print()','class'=>'btn btn-primary btn-form')); ?>&nbsp;&nbsp;
-    <?php echo $this->Form->button(__('ยกเลิก'),array('onclick'=>"window.location.href='../AssetInformations/report/'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>
+    <?php echo $this->Form->button(__('ยกเลิก'),array('onclick'=>"window.location.href=' /AssetInformations/report/'",'type'=>'button','class'=>'btn btn-default btn-form')); ?>
     <?php echo $this->Form->end(); ?>
 
   </div>

@@ -33,7 +33,7 @@ class FileDocumentsController extends AppController {
                 $doc = pathinfo($document['name'], PATHINFO_EXTENSION);
                 $document['file_doc_path'] = '/files/filedocument';
                 $document['file_doc_file_type'] = $document['type'];
-                $document['file_doc_name'] = 'filedocumentzzz_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
+                $document['file_doc_name'] = 'filedocument_' . $assetInformationId . '_' . $this->FileDocument->id . '.' . $doc;
                 $document['asset_information_id'] = $assetInformationId;
                 
                 $currentUser = $this->Session->read('Auth.User');

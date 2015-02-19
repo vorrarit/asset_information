@@ -246,9 +246,6 @@
             <div class="col-md-2">
                 <label class="control-label left">บาทต่อตารางวา</label>
             </div>
-            <div class="col-md-3">
-                <label class="control-label left"><a href = 'http://property.treasury.go.th/pvmwebsite/' target='_blank''><span class='glyphicon glyphicon-hand-right'>  ตรวจสอบราคาประเมิน</a></span></label>
-            </div>
         </div>
         
         <div class ="row">

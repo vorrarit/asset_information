@@ -68,17 +68,21 @@
                 <tr>
                     <th><?php echo __('ลำดับ'); ?></th>
                     <th><?php echo __('ชื่อไฟล์'); ?></th>
-                    <th><?php echo __('บันทึกโดย'); ?></th>
                     <th><?php echo __('วันที่'); ?></th>
+                    <th><?php echo __('บันทึกโดย'); ?></th>
+                    
                 </tr>
             </thead>
             <tbody>
+                <?php $index =0 ?>
                 <?php foreach ($fileMaps as $fileMap): ?>
                     <tr>
-                        <td><?php echo h($fileMap['FileMap']['id']); ?>&nbsp;</td>
+                        <?php $index++ ;?>
+                        <td><?php echo $index ?></td>
                         <td><?php echo h($fileMap['FileMap']['file_map_name']); ?>&nbsp;</td>
-                        <td><?php echo h($fileMap['FileMap']['created_by']); ?>&nbsp;</td>
                         <td><?php echo h($fileMap['FileMap']['created']); ?>&nbsp;</td>
+                        <td><?php echo h($fileMap['FileMap']['created_by']); ?>&nbsp;</td>
+                        
                     </tr>
                 <?php endforeach; ?>
             </tbody>
