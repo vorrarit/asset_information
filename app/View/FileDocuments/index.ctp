@@ -28,13 +28,13 @@
                         
                     </ul>
                 </div>
-                <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
-                <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+                <a href="#" class="prev prev-stage" style="cursor:pointer;"><span>&lsaquo;</span></a>
+                <a href="#" class="next next-stage" style="cursor:pointer;"><span>&rsaquo;</span></a>
             </div>
 
             <div class="navigation">
-                <a href="#" class="prev prev-navigation">&lsaquo;</a>
-                <a href="#" class="next next-navigation">&rsaquo;</a>
+                <a href="#" class="prev prev-navigation" style="cursor:pointer;">&lsaquo;</a>
+                <a href="#" class="next next-navigation" style="cursor:pointer;">&rsaquo;</a>
                 <div class="carousel carousel-navigation">
                     <ul>
                         <?php foreach ($fileDocuments as $fileDocument) { ?>	
@@ -65,23 +65,19 @@
                 <tr>
                     <th><?php echo ('ลำดับ'); ?></th>
                     <th><?php echo ('ชื่อไฟล์'); ?>&nbsp;</th>
-                     <th><?php echo ('วันที่'); ?>&nbsp;</th>
                     <th><?php echo ('บันทึกโดย'); ?>&nbsp;</th>
-                   
+                    <th><?php echo ('วันที่'); ?>&nbsp;</th>
                    
                     <th class="actions"><?php echo __('เอกสาร'); ?>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                <?php $index =0 ?>
                 <?php foreach ($fileDocuments as $fileDocument): ?>
                     <tr>
-                        <?php $index++ ;?>
-                        <td><?php echo $index ?></td>              
+                        <td><?php echo h($fileDocument['FileDocument']['id']); ?>&nbsp;</td>                  
                         <td><?php echo h($fileDocument['FileDocument']['file_doc_name']); ?>&nbsp;</td>
-                        <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
                         <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
-                        
+                        <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
                         
 
                         <td class="actions">
@@ -98,4 +94,3 @@
     </div>
 </div>
 </div>
-

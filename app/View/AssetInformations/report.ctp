@@ -43,7 +43,8 @@
                     <?php
                     echo $this->Form->input('asset_info_title_deed_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
             </div>
@@ -56,7 +57,8 @@
                     <?php
                     echo $this->Form->input('asset_info_mapsheet_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
                 <div class="col-lg-2">
@@ -66,7 +68,8 @@
                     <?php
                     echo $this->Form->input('asset_info_parcel_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
             </div>
@@ -79,7 +82,8 @@
                     <?php
                     echo $this->Form->input('asset_info_dealing_file_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
                 <div class="col-lg-2">
@@ -271,6 +275,17 @@
         if( !regex.test(key) ) {
             theEvent.returnValue = false;
             if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+    function isThai(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /^[a-z]+[a-z0-9]*$/i;
+        if (regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault)
+                theEvent.preventDefault();
         }
     }
     

@@ -32,13 +32,13 @@
                             <?php } ?>
                         </ul>
                     </div>
-                    <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
-                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+                    <a href="#" class="prev prev-stage" style="cursor:pointer;"><span>&lsaquo;</span></a>
+                    <a href="#" class="next next-stage" style="cursor:pointer;"><span>&rsaquo;</span></a>
                 </div>
 
                 <div class="navigation">
-                    <a href="#" class="prev prev-navigation">&lsaquo;</a>
-                    <a href="#" class="next next-navigation">&rsaquo;</a>
+                    <a href="#" class="prev prev-navigation" style="cursor:pointer;">&lsaquo;</a>
+                    <a href="#" class="next next-navigation" style="cursor:pointer;">&rsaquo;</a>
                     <div class="carousel carousel-navigation">
                         <ul>
                             <?php foreach ($fileMaps as $fileMap) { ?>

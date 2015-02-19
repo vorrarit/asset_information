@@ -31,13 +31,13 @@
                             <?php } ?>
                         </ul>
                     </div>
-                    <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
-                    <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+                    <a href="#" class="prev prev-stage" style="cursor:pointer;"><span>&lsaquo;</span></a>
+                    <a href="#" class="next next-stage" style="cursor:pointer;"><span>&rsaquo;</span></a>
                 </div>
 
                 <div class="navigation">
-                    <a href="#" class="prev prev-navigation">&lsaquo;</a>
-                    <a href="#" class="next next-navigation">&rsaquo;</a>
+                    <a href="#" class="prev prev-navigation" style="cursor:pointer;">&lsaquo;</a>
+                    <a href="#" class="next next-navigation" style="cursor:pointer;">&rsaquo;</a>
                     <div class="carousel carousel-navigation">
                         <ul>
                             <?php foreach ($fileMaps as $fileMap) { ?>
@@ -69,24 +69,20 @@
                 <tr>
                     <th><?php echo __('ลำดับ'); ?></th>
                     <th><?php echo __('ชื่อไฟล์'); ?></th>
-                      <th><?php echo __('วันที่'); ?></th>
                     <th><?php echo __('บันทึกโดย'); ?></th>
-                  
+                    <th><?php echo __('วันที่'); ?></th>
 
 
                     <th class="actions"><?php echo __('เอกสาร'); ?></th>
                 </tr>
             </thead>
             <tbody>
-                <?php $index =0 ?>
                 <?php foreach ($fileMaps as $fileMap): ?>
                     <tr>
-                        <?php $index++ ;?>
-                        <td><?php echo $index ?></td>
+                        <td><?php echo h($fileMap['FileMap']['id']); ?>&nbsp;</td>
                         <td><?php echo h($fileMap['FileMap']['file_map_name']); ?>&nbsp;</td>
-                             <td><?php echo h($fileMap['FileMap']['created']); ?>&nbsp;</td>
                         <td><?php echo h($fileMap['FileMap']['created_by']); ?>&nbsp;</td>
-                   
+                        <td><?php echo h($fileMap['FileMap']['created']); ?>&nbsp;</td>
 
 
                         <td class="actions">

@@ -19,7 +19,7 @@
                     <?php
                     echo $this->Form->input('search_type', array(
                         'label' => FALSE,
-                        'options' => array('general' => 'ทั่วไป', 'detail' => 'รายละเอียด'),
+                        'options' => array('general' => 'ทั่วไป', 'detail' => 'ละเอียด'),
                         'onchange' => 'check_search()'));
                     ?>
                 </div>
@@ -43,7 +43,8 @@
                     <?php
                     echo $this->Form->input('asset_info_title_deed_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
             </div>
@@ -56,7 +57,8 @@
                     <?php
                     echo $this->Form->input('asset_info_mapsheet_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
                 <div class="col-lg-2">
@@ -66,7 +68,8 @@
                     <?php
                     echo $this->Form->input('asset_info_parcel_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
             </div>
@@ -79,7 +82,8 @@
                     <?php
                     echo $this->Form->input('asset_info_dealing_file_no', array(
                         'maxlength' => '50',
-                        'label' => FALSE));
+                        'label' => FALSE,
+                        'onkeypress'=>'isThai(event)'));
                     ?>
                 </div>
                 <div class="col-lg-2">
@@ -202,11 +206,10 @@
                         <label class="control-label right">ราคาประเมิน : </label>
                     </div>
                     <div class="col-lg-2">
-                        <?php
-                        echo $this->Form->input('asset_info_cost_estimate', array(
-                        'label' => FALSE,
-                        'empty' => 'กรุณาเลือก'))
-                        ?>
+                    <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=> FALSE ,
+                        'onKeyDown' => "if(this.value.length==9 && event.keyCode != 8 ) return false;",
+                        'onblur'=>'precisionFix(this.value)'))
+                    ;?>
                     </div>
                 <label class="control-label">&nbsp;&nbsp;บาทต่อตารางวา</label>
             </div>
@@ -266,11 +269,11 @@
                 <th class="actions" width="80"><?php echo __('เอกสาร'); ?></th></tr>
         </thead>
         <tbody>
-            <?php $i=0; ?>
+            <?php $i=0 ?>
             <?php foreach ($assetInformations as $assetInformation): ?>
                 <tr>
                     <?php $i++ ?>
-                    <td><?php echo $i; ?>&nbsp;</td>
+                    <td><?php echo h($i); ?>&nbsp;</td>
                     <td><?php echo h($assetInformation['AssetInformation']['asset_info_name']); ?>&nbsp;</td>
                     <td>
                         <?php echo h($assetInformation['SubDistrict']['sub_district_name']); ?>&nbsp;
@@ -394,6 +397,11 @@
         }
 
     }
+    function precisionFix(value){
+        var result=Math.round(value*100)/100;  
+        $("#AssetInformationAssetInfoCostEstimate").val(result);
+    }
+        
     function validate(evt) {
         var theEvent = evt || window.event;
         var key = theEvent.keyCode || theEvent.which;
@@ -405,14 +413,22 @@
                 theEvent.preventDefault();
         }
     }
+    
+    function isThai(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /^[a-z]+[a-z0-9]*$/i;
+        if (regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault)
+                theEvent.preventDefault();
+        }
+    }
 </script>
-
-
-
 
 <script type='text/javascript' src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
 <script type="text/javascript">
-
     var map = null;
     var marker = new google.maps.Marker();
     function initialize() {
@@ -468,10 +484,3 @@
     });
 
 </script>
-
-
-
-
-
-
-

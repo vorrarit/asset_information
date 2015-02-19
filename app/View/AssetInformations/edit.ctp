@@ -27,8 +27,9 @@
         <div class="col-lg-2">
           <label class="control-label right">ชื่อศาสนสมบัติ : </label>
         </div>
+        <?php echo $this->Form->input('id',array('type'=>'hidden' , 'value'=>$id));?>
+            
             <div class="col-lg-4">
-                <?php echo $this->Form->input('id',array('type'=>'hidden' , 'value'=>$id));?>
                 <?php echo $this->Form->input('asset_info_name',array('label'=> FALSE , 'required'=>true ,'maxlength'=>'50'));?>
             </div>
         </div>
@@ -38,7 +39,10 @@
           <label class="control-label right">เลขที่โฉนด: </label>
         </div>
             <div class="col-lg-4">
-                <?php echo $this->Form->input('asset_info_title_deed_no',array('label'=> False, 'required'=>true,'maxlength'=>'6'));?>
+                <?php echo $this->Form->input('asset_info_title_deed_no',
+                    array('label'=> False,
+                    'required'=>true,'maxlength'=>'6',
+                    'onkeypress'=>'isThai(event)'));?>
             </div>
         </div>
         
@@ -47,7 +51,11 @@
           <label class="control-label right">ระวาง: </label>
         </div>
             <div class="col-lg-4">
-                <?php echo $this->Form->input('asset_info_mapsheet_no',array('label'=> False, 'required'=>true,'maxlength'=>'30'));?>
+                <?php echo $this->Form->input('asset_info_mapsheet_no',
+                        array('label'=> False, 'required'=>true,
+                        'maxlength'=>'30',
+                        'onkeypress'=>'isThai(event)'));
+                ?>
             </div>
         </div>
         
@@ -56,7 +64,10 @@
           <label class="control-label right">เลขที่ดิน: </label>
         </div>
             <div class="col-lg-4">
-                <?php echo $this->Form->input('asset_info_parcel_no',array('label'=> False,'maxlength'=>'10'));?>
+                <?php echo $this->Form->input('asset_info_parcel_no',
+                        array('label'=> False,'maxlength'=>'10',
+                        'onkeypress'=>'isThai(event)'));
+                ?>
             </div>
         </div>
         
@@ -65,7 +76,9 @@
           <label class="control-label right">หน้าสำรวจ: </label>
         </div>
             <div class="col-lg-4">
-                <?php echo $this->Form->input('asset_info_dealing_file_no',array('label'=> False,'maxlength'=>'6'));?>
+                <?php echo $this->Form->input('asset_info_dealing_file_no',
+                        array('label'=> False,'maxlength'=>'6',
+                            'onkeypress'=>'isThai(event)'));?>
             </div>
         </div>
         
@@ -197,7 +210,9 @@
                 <label class="control-label right">ราคาประเมิน: </label>
             </div>
             <div class="col-md-2">
-             <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=> FALSE , 'onKeyDown' => "if(this.value.length==9 && event.keyCode != 8 ) return false;", 'onblur'=>'precisionFix(this.value)'));?> 
+                <?php echo $this->Form->input('asset_info_cost_estimate',array('onkeypress'=>'validate(event)','label'=> FALSE ,
+                    'onKeyDown' => "if(this.value.length==9 && event.keyCode != 8 ) return false;",
+                    'onblur'=>'precisionFix(this.value)'));?>
             </div>
             <div class="col-md-2">
                 <label class="control-label left">บาทต่อตารางวา</label>
@@ -326,6 +341,18 @@
             if(theEvent.preventDefault) theEvent.preventDefault();
         }
     }
+    function isThai(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /^[a-z]+[a-z0-9]*$/i;
+        if (regex.test(key)) {
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault)
+                theEvent.preventDefault();
+        }
+    }
+    
 //    document.forms[0].elements['data[AssetInformation][district_id]'].options.length = 1;
 //    document.forms[0].elements['data[AssetInformation][sub_district_id]'].options.length = 1;
     
@@ -421,5 +448,5 @@ $('#btnGeoCoderSearch').click(function() {
 		}
 	});
 });
-function precisionFix(value){ var result=Math.round(value*100)/100; $("#AssetInformationAssetInfoCostEstimate").val(result); }
+
 </script>
