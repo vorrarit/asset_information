@@ -16,7 +16,7 @@ class UsersController extends AppController {
      *
      * @var array
      */
-   
+
 
     /**
      * index method
