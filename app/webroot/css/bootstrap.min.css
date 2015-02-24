@@ -5,6 +5,25 @@ html {
 body {
     margin: 0;
 }
+@media print {
+   .hideButton{
+      display: none !important;
+   }
+   a[href]:after {
+    content: none !important;
+  }
+}
+
+.tablefixed{
+    table-layout: fixed;    
+}
+.tablefixed td{
+    text-align: left; 
+    word-wrap: break-word;
+    white-space: pre;
+}
+
+
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
     display: block;
 }
