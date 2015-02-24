@@ -9,7 +9,7 @@
 </div>
 
 <div class="assetInformations form row">
-    <?php echo $this->Form->create('AssetInformation', array('action' => 'multiExport')); ?>
+    <?php echo $this->Form->create('AssetInformation', array('action' => 'report_general')); ?>
 
   <div class="panel panel-default">
     <div class="panel-heading">

@@ -10,7 +10,7 @@
 </div>
 
 <div class="assetInformations form row">
-    <?php echo $this->Form->create('AssetInformation', array('action' => 'multiExport')); ?>
+    <?php echo $this->Form->create('AssetInformation', array('action' => 'export_manager')); ?>
   <div class="panel panel-default">
     <div class="panel-heading">
         <h3 style="margin-top: 7px; margin-bottom: 2px;">ผลการค้นหา</h3>
