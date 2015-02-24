@@ -6,7 +6,7 @@
 		echo $this->Form->input('user_group_id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('username',array('onkeypress'=>'validate(event)'));
-		echo $this->Form->input('password');
+		echo $this->Form->input('password',array('onkeypress'=>'validate(event)'));
 		
 	?>
 <?php echo $this->Form->button(__('Submit'), array('class'=>'btn btn-primary btn-form')); ?>&nbsp;
@@ -18,7 +18,7 @@
         var theEvent = evt || window.event;
         var key = theEvent.keyCode || theEvent.which;
         key = String.fromCharCode(key);
-        var regex = /^[a-z]+[a-z0-9]*$|[0-9]/i;
+        var regex = /^[a-z]+[a-z0-9]*$|[0-9]|[\t]|[\b]/i;
 
         if (!regex.test(key)) {
             theEvent.returnValue = false;
