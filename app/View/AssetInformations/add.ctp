@@ -214,8 +214,8 @@
                 <label class="control-label right">ราคาประเมิน: </label>
             </div>
             <div class="col-md-2">
-                <?php echo $this->Form->input('asset_info_cost_estimate',array('placeholder'=>'XXXXXX.XX','onkeypress'=>'validate(event)','label'=> FALSE ,
-                    'onKeyDown' => "if(this.value.length==9 && event.keyCode != 8 ) return false;",
+                <?php echo $this->Form->input('asset_info_cost_estimate',array('placeholder'=>'XXXXXXXX.XX','onkeypress'=>'validate(event)','label'=> FALSE ,
+                    'onKeyDown' => "if(this.value.length==11 && event.keyCode != 8 ) return false;",
                     'onblur'=>'precisionFix(this.value)'));?>
             </div>
             <div class="col-md-2">

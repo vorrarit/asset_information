@@ -78,9 +78,11 @@
             </tr>
         </thead>
         <tbody>
+            <?php $index =0 ?>
 	<?php foreach ($photos as $photo): ?>
             <tr>
-                <td><?php echo h($photo['Photo']['id']); ?>&nbsp;</td>
+                <?php $index++; ?>
+                <td><?php echo $index ?></td>
                 <td><?php echo h($photo['Photo']['photo_name']); ?>&nbsp;</td>
                 <td><?php echo h($photo['Photo']['created_by']); ?>&nbsp;</td>
 		<td><?php echo h($photo['Photo']['created']); ?>&nbsp;</td>
@@ -97,11 +99,3 @@
         <?php } ?>
     </div>
 </div>
-<!--<div class="actions">
-        <h3><?php echo __('Actions'); ?></h3>
-        <ul>
-                <li><?php echo $this->Html->link(__('New Photo'), array('action' => 'add')); ?></li>
-                <li><?php echo $this->Html->link(__('List Asset Informations'), array('controller' => 'asset_informations', 'action' => 'index')); ?> </li>
-                <li><?php echo $this->Html->link(__('New Asset Information'), array('controller' => 'asset_informations', 'action' => 'add')); ?> </li>
-        </ul>
-</div>-->

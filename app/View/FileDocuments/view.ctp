@@ -61,8 +61,9 @@
                     <tr>
                         <th><?php echo ('ลำดับ'); ?></th>
                         <th><?php echo ('ชื่อไฟล์'); ?>&nbsp;</th>
+                         <th><?php echo ('บันทึกโดย'); ?>&nbsp;</th>
                         <th><?php echo ('วันที่'); ?>&nbsp;</th>
-                        <th><?php echo ('บันทึกโดย'); ?>&nbsp;</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -72,9 +73,9 @@
                             <?php $index++; ?>
                             <td><?php echo $index ?></td>
                             <td><?php echo h($fileDocument['FileDocument']['file_doc_name']); ?>&nbsp;</td>
-                            <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
                             <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
-
+                            <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
+                            
 
                         </tr>
                     <?php endforeach; ?>

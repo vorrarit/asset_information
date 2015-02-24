@@ -72,9 +72,11 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $index =0 ?>
                 <?php foreach ($fileDocuments as $fileDocument): ?>
                     <tr>
-                        <td><?php echo h($fileDocument['FileDocument']['id']); ?>&nbsp;</td>                  
+                        <?php $index++; ?>
+                        <td><?php echo $index ?></td>            
                         <td><?php echo h($fileDocument['FileDocument']['file_doc_name']); ?>&nbsp;</td>
                         <td><?php echo h($fileDocument['FileDocument']['created_by']); ?>&nbsp;</td>
                         <td><?php echo h($fileDocument['FileDocument']['created']); ?>&nbsp;</td>
