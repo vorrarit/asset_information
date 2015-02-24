@@ -412,7 +412,15 @@ class AssetInformationsController extends AppController {
         $this->set('assetInformations', $this->Paginator->paginate('AssetInformation'));
     }
 
-    public function multiExport() {
+    public function export_general() {
+        if ($this->request->is(array('post', 'put'))) {
+            $productIds = array();
+            $this->Paginator->settings = $productIds;
+            $this->set('assetInformations', $this->Paginator->paginate());
+            $this->layout = 'csv';
+        }
+    }
+    public function export_manager() {
         if ($this->request->is(array('post', 'put'))) {
             $productIds = array();
             $this->Paginator->settings = $productIds;
